@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Backdrop, Box, Modal, Fade, Button} from '@mui/material';
-import StyledOAuthLogin from './Login.js'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { uiConfig, auth } from './FirebaseConfig';
 
 const style = {
   position: 'absolute',
@@ -14,7 +15,7 @@ const style = {
   p: 4,
 };
 
-export default function LoginModal() {
+export default function LoginModal({isSignedIn, setIsSignedIn}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -35,7 +36,7 @@ export default function LoginModal() {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <StyledOAuthLogin/>
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
           </Box>
         </Fade>
       </Modal>
