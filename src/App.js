@@ -11,10 +11,6 @@ function App() {
     useEffect(() => {
         const unsubscribe = firebase.auth().onAuthStateChanged(user => {
             setIsSignedIn(!!user);
-
-            user.getIdToken().then(result => {
-                console.log("User ID token", result);
-            })
         });
         return () => unsubscribe();
     }, []);
