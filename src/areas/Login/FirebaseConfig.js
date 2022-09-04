@@ -1,5 +1,5 @@
-import firebase, {initializeApp} from 'firebase/compat/app';
-import {getAuth} from 'firebase/auth'
+import firebase from 'firebase/compat/app';
+import {getAuth, GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, TwitterAuthProvider} from 'firebase/auth'
 
 export const firebaseConfig = {
     apiKey: "AIzaSyCHH0YgiqhKnxixL3fHDGIGtwFYSD1qoVg",
@@ -10,21 +10,20 @@ export const firebaseConfig = {
     messagingSenderId: "353532727159",
     appId: "1:353532727159:web:6f97067da22d2747715b72",
     measurementId: "G-MNVY6QHEDD"
-  }
+}
 
- export const uiConfig = {
+export const uiConfig = {
     signInFlow: 'popup',
     signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      firebase.auth.GithubAuthProvider.PROVIDER_ID,
-      firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      firebase.auth.OAuthProvider.PROVIDER_ID
+        GoogleAuthProvider.PROVIDER_ID,
+        FacebookAuthProvider.PROVIDER_ID,
+        GithubAuthProvider.PROVIDER_ID,
+        TwitterAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
-      signInSuccessWithAuthResult: () => false,
+        signInSuccessWithAuthResult: () => false,
     },
-  }
+}
 
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 export const auth = getAuth(app);

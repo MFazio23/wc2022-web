@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Backdrop, Box, Modal, Fade, Button} from '@mui/material';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { uiConfig, auth } from './FirebaseConfig';
+import StyledFirebaseAuth from "./StyledFirebaseAuth";
 
 const style = {
   position: 'absolute',
