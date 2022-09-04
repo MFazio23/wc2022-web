@@ -32,7 +32,7 @@ const StyledFirebaseAuth = ({uiConfig, firebaseAuth, className, uiCallback}) => 
             unregisterAuthObserver();
             firebaseUiWidget.reset();
         };
-    }, [firebaseui, uiConfig]);
+    }, [firebaseAuth, uiCallback, uiConfig, userSignedIn]);
 
     return <div className={className} ref={elementRef} />;
 }
