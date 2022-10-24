@@ -243,3 +243,6 @@ fabric.properties
 !.idea/runConfigurations
 
 # End of https://www.toptal.com/developers/gitignore/api/webstorm+all,node,react
+
+# ignore build folder too
+build
