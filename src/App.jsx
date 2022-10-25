@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import firebase from 'firebase/compat/app';
-import LoginModal from './areas/Login/LoginModal';
-import {auth} from './areas/Login/FirebaseConfig';
-import {Button} from "@mui/material";
+import {Box} from "@mui/material";
+import TopNav from "./areas/TopNav/TopNav";
+import Main from "./areas/Main/Main";
 
 
 function App() {
     const [isSignedIn, setIsSignedIn] = useState(undefined)
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
-    useEffect(() => {
+    /*useEffect(() => {
         const unsubscribe = firebase.auth().onAuthStateChanged(user => {
             setIsSignedIn(!!user);
         });
@@ -20,7 +20,7 @@ function App() {
         return (
             <div className="App">
                 <header className="App-header">
-                    <LoginModal isSignedIn={isSignedIn}/>
+                    <LoginModal open={isLoginModalOpen} setOpen={setIsLoginModalOpen} isSignedIn={isSignedIn}/>
                 </header>
             </div>
         );
@@ -32,6 +32,13 @@ function App() {
                 <Button onClick={() => auth.signOut()}>Sign Out</Button>
             </header>
         </div>
+    )*/
+
+    return (
+        <Box>
+            <TopNav />
+            <Main />
+        </Box>
     )
 
 }
