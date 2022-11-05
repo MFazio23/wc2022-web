@@ -1,46 +1,41 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Box} from "@mui/material";
 import TopNav from "./areas/TopNav/TopNav";
 import Main from "./areas/Main/Main";
+import {auth} from "./data/firebase-service";
+import LoginModal from "./areas/Login/LoginModal";
+import {updateApiKey} from "./data/api-service";
 
 
 function App() {
-    const [isSignedIn, setIsSignedIn] = useState(undefined)
+    const [user, setUser] = useState(null);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
 
-    /*useEffect(() => {
-        const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-            setIsSignedIn(!!user);
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setUser(user);
+            setIsLoginModalOpen(false);
+            updateApiKey(user.accessToken);
         });
         return () => unsubscribe();
     }, []);
 
-    if (!isSignedIn) {
-        return (
-            <div className="App">
-                <header className="App-header">
-                    <LoginModal open={isLoginModalOpen} setOpen={setIsLoginModalOpen} isSignedIn={isSignedIn}/>
-                </header>
-            </div>
-        );
+    const handleAccountClick = async () => {
+        if (user) {
+            await auth.signOut();
+        } else {
+            setIsLoginModalOpen(true)
+        }
     }
-    return (
-        <div className="App">
-            <header className="App-header">
-                <p>Welcome {auth.currentUser.displayName}! You are now signed in.</p>
-                <Button onClick={() => auth.signOut()}>Sign Out</Button>
-            </header>
-        </div>
-    )*/
 
     return (
         <Box>
-            <TopNav />
-            <Main />
+            <TopNav user={user} handleAccountClick={handleAccountClick}/>
+            <Main user={user} isSignedIn={!!user}/>
+            <LoginModal open={isLoginModalOpen} />
         </Box>
     )
-
 }
 
 export default App;

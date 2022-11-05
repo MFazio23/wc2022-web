@@ -1,10 +1,10 @@
 const FirebaseEnv = {
-    Staging: "wc2022",
-    Prod: "wc2022-staging"
+    Staging: "wc2022-staging",
+    Prod: "wc2022"
 }
 
 const ApiEnv = {
-    Local: "http://localhost:8080/",
+    Local: "http://localhost:8023/",
     Staging: "https://wc2022-api-staging.mfazio.dev/",
     Prod: "https://wc2022-api.mfazio.dev/"
 }

@@ -4,22 +4,18 @@ import TopNavMenu from "./TopNavMenu";
 import {Link} from "react-router-dom";
 
 function TopNav(props) {
-    const onIconClicked = () => {
-
-    }
-
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position="static" color="primary">
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="logo" className="logo-image-button"
-                                disableRipple={true} onClick={onIconClicked} component={Link} to="/">
+                                disableRipple={true} component={Link} to="/">
                         <Box component="img" src={gradientBall} className="logo-image" alt="logo"/>
                     </IconButton>
                     <Typography variant="h6" color="inherit" sx={{flex: 1}}>
                         WC2022
                     </Typography>
-                    <TopNavMenu />
+                    <TopNavMenu user={props.user} handleAccountClick={props.handleAccountClick}/>
                 </Toolbar>
             </AppBar>
         </Box>

@@ -1,9 +1,9 @@
-import {Person} from "@mui/icons-material";
-import {Box, IconButton, Menu, MenuItem, Stack, Typography, useTheme} from "@mui/material";
+import {Box, Menu, MenuItem, useTheme} from "@mui/material";
 import {useContext, useState} from "react";
 import ColorModeContext from "../Theming/ColorModeContext";
 import ProfileIconButton from "./ProfileIconButton";
 import {Link} from "react-router-dom";
+import {auth} from "../../data/firebase-service";
 
 const CloseSource = {
     Login: "login",
@@ -25,11 +25,14 @@ function TopNavMenu(props) {
     const toggleUIMode = () => {
         colorModeContext.toggleColorMode()
     }
-    const signOut = () => {
+    const handleAccountClick = () => {
 
         //firebase.auth().signOut();
-        props.onSignOut();
+
+        //props.onSignOut();
+
         handleClose(CloseSource.ProfileMenu);
+        props.handleAccountClick(!props.user)
         /*GA.event({
             category: 'user',
             action: 'signOut'
@@ -38,7 +41,7 @@ function TopNavMenu(props) {
 
     return (
         <Box>
-            <ProfileIconButton text={"Account"} handleIconClick={handleIconClick}/>
+            <ProfileIconButton text={props.user ? props.user.displayName : "Account"} handleIconClick={handleIconClick}/>
             <Menu
                 anchorEl={anchorEl}
                 open={open}
@@ -52,7 +55,7 @@ function TopNavMenu(props) {
                 <MenuItem onClick={() => toggleUIMode()}>
                     {theme.palette.mode === 'light' ? "Dark mode" : "Light mode"}
                 </MenuItem>
-                <MenuItem onClick={signOut}>Sign out</MenuItem>
+                <MenuItem onClick={handleAccountClick}>{props.user ? "Sign out" : "Sign in"}</MenuItem>
             </Menu>
         </Box>
     )

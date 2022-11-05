@@ -1,11 +1,12 @@
 import {Route, Routes} from "react-router-dom";
 import Privacy from "../About/Privacy";
 import Overview from "./Overview";
+import ListParties from "../Party/ListParties";
 
 function Main(props) {
 
     const homeRender = props.isSignedIn ?
-        (<div>ListParties</div>) :
+        (<ListParties user={props.user} />) :
         (<Overview />)
 
     return (
@@ -14,7 +15,7 @@ function Main(props) {
                 <Route path='/' element={homeRender}/>
                 <Route path='/login' element={<div>Login</div>}/>
                 <Route path='/overview' element={<Overview />}/>
-                <Route path='/party' element={<div>ListParties</div>}/>
+                <Route path='/party' element={<ListParties />}/>
                 <Route path='/profile' element={<div>Profile</div>}/>
                 <Route path='/schedule' element={<div>Schedule</div>}/>
                 <Route path='/privacy' element={<Privacy />}/>
