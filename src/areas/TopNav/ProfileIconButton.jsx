@@ -1,29 +1,18 @@
-import {withStyles} from "@mui/styles";
 import {Box, Button, Typography} from "@mui/material";
 import {Person} from "@mui/icons-material";
 
-const styles = theme => ({
-    text: {
-        color: 'white',
-        fontSize: '0.75em'
-    },
-    button: {
-        flexDirection: 'column',
-        padding: 0
-    },
-})
 
 function ProfileIconButton({classes, text, handleIconClick}) {
     return <Box>
-        <Button classes={{root: classes.button}} color="primary" variant="raised" disableRipple={true} onClick={handleIconClick}>
-            <Person color="white" />
-            <Typography variant="body2" className={classes.text}>{text}</Typography>
+        <Button className="profile-icon-button" color="primary" variant="raised" disableRipple={true}
+                onClick={handleIconClick}>
+            <Person color="white"/>
+            <Typography variant="body2" color="white" fontSize={"0.75em"}>{text}</Typography>
         </Button>
     </Box>
 }
 
-export default withStyles(styles)(ProfileIconButton)
-
+export default ProfileIconButton;
 /*
 const styles = theme => ({
   button: {

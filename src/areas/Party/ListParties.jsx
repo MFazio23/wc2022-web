@@ -4,16 +4,8 @@ import {useEffect, useState} from "react";
 import {Box} from "@mui/material";
 import {getParties} from "../../data/api-service";
 import PartyCard from "./PartyCard";
-import {withStyles} from "@mui/styles";
 
 const partyRef = ref(db, `/parties`);
-
-const styles = theme => ({
-    partyList: {
-        width: 'fit-content',
-        margin: '0 auto'
-    }
-})
 
 function ListParties(props) {
     const [apiParties, setApiParties] = useState([]);
@@ -41,23 +33,23 @@ function ListParties(props) {
 
     const output =
         (apiParties &&
-        firebaseParties &&
-        Object
-            .entries(firebaseParties)
-            .filter(([partyCode, _]) => apiParties.find(apiParty => apiParty.code === partyCode))
-            .map(([_, party]) => {
-            return {
-                ...party,
-                owner: party.owner.name,
-                players: Object.entries(party.players || {}).map(([id, player]) => player)
-            }
-        })) || [];
+            firebaseParties &&
+            Object
+                .entries(firebaseParties)
+                .filter(([partyCode, _]) => apiParties.find(apiParty => apiParty.code === partyCode))
+                .map(([_, party]) => {
+                    return {
+                        ...party,
+                        owner: party.owner.name,
+                        players: Object.entries(party.players || {}).map(([id, player]) => player)
+                    }
+                })) || [];
 
     return (
-        <Box className={props.classes.partyList}>
-            {output.map(party => <PartyCard key={party.code} party={party} />)}
+        <Box>
+            {output.map(party => <PartyCard key={party.code} party={party}/>)}
         </Box>
     )
 }
 
-export default withStyles(styles)(ListParties);
+export default ListParties;

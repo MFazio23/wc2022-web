@@ -2,61 +2,61 @@ export const Teams = {
     "ARG": {
         "teamId": "ARG",
         "teamName": "Argentina",
-        "flagCode": "AR",
+        "flagCode": "ar",
         "group": "C"
     },
     "AUS": {
         "teamId": "AUS",
         "teamName": "Australia",
-        "flagCode": "AU",
+        "flagCode": "au",
         "group": "D"
     },
     "BEL": {
         "teamId": "BEL",
         "teamName": "Belgium",
-        "flagCode": "BE",
+        "flagCode": "be",
         "group": "F"
     },
     "BRA": {
         "teamId": "BRA",
         "teamName": "Brazil",
-        "flagCode": "BR",
+        "flagCode": "br",
         "group": "G"
     },
     "CMR": {
         "teamId": "CMR",
         "teamName": "Cameroon",
-        "flagCode": "CM",
+        "flagCode": "cm",
         "group": "G"
     },
     "CAN": {
         "teamId": "CAN",
         "teamName": "Canada",
-        "flagCode": "CA",
+        "flagCode": "ca",
         "group": "F"
     },
     "CRC": {
         "teamId": "CRC",
         "teamName": "Costa Rica",
-        "flagCode": "CR",
+        "flagCode": "cr",
         "group": "E"
     },
     "CRO": {
         "teamId": "CRO",
         "teamName": "Croatia",
-        "flagCode": "HR",
+        "flagCode": "hr",
         "group": "F"
     },
     "DEN": {
         "teamId": "DEN",
         "teamName": "Denmark",
-        "flagCode": "DK",
+        "flagCode": "dk",
         "group": "D"
     },
     "ECU": {
         "teamId": "ECU",
         "teamName": "Ecuador",
-        "flagCode": "EC",
+        "flagCode": "ec",
         "group": "A"
     },
     "ENG": {
@@ -68,121 +68,121 @@ export const Teams = {
     "FRA": {
         "teamId": "FRA",
         "teamName": "France",
-        "flagCode": "FR",
+        "flagCode": "fr",
         "group": "D"
     },
     "GER": {
         "teamId": "GER",
         "teamName": "Germany",
-        "flagCode": "DE",
+        "flagCode": "de",
         "group": "E"
     },
     "GHA": {
         "teamId": "GHA",
         "teamName": "Ghana",
-        "flagCode": "GH",
+        "flagCode": "gh",
         "group": "H"
     },
     "IRN": {
         "teamId": "IRN",
         "teamName": "IR Iran",
-        "flagCode": "IR",
+        "flagCode": "ir",
         "group": "B"
     },
     "JPN": {
         "teamId": "JPN",
         "teamName": "Japan",
-        "flagCode": "JP",
+        "flagCode": "jp",
         "group": "E"
     },
     "KOR": {
         "teamId": "KOR",
         "teamName": "Korea Republic",
-        "flagCode": "KR",
+        "flagCode": "kr",
         "group": "H"
     },
     "MEX": {
         "teamId": "MEX",
         "teamName": "Mexico",
-        "flagCode": "MX",
+        "flagCode": "mx",
         "group": "C"
     },
     "MAR": {
         "teamId": "MAR",
         "teamName": "Morocco",
-        "flagCode": "MA",
+        "flagCode": "ma",
         "group": "F"
     },
     "NED": {
         "teamId": "NED",
         "teamName": "Netherlands",
-        "flagCode": "NL",
+        "flagCode": "nl",
         "group": "A"
     },
     "POL": {
         "teamId": "POL",
         "teamName": "Poland",
-        "flagCode": "PL",
+        "flagCode": "pl",
         "group": "C"
     },
     "POR": {
         "teamId": "POR",
         "teamName": "Portugal",
-        "flagCode": "PT",
+        "flagCode": "pt",
         "group": "H"
     },
     "QAT": {
         "teamId": "QAT",
         "teamName": "Qatar",
-        "flagCode": "QA",
+        "flagCode": "qa",
         "group": "A"
     },
     "KSA": {
         "teamId": "KSA",
         "teamName": "Saudi Arabia",
-        "flagCode": "SA",
+        "flagCode": "sa",
         "group": "C"
     },
     "SEN": {
         "teamId": "SEN",
         "teamName": "Senegal",
-        "flagCode": "SN",
+        "flagCode": "sn",
         "group": "A"
     },
     "SRB": {
         "teamId": "SRB",
         "teamName": "Serbia",
-        "flagCode": "RS",
+        "flagCode": "rs",
         "group": "G"
     },
     "ESP": {
         "teamId": "ESP",
         "teamName": "Spain",
-        "flagCode": "ES",
+        "flagCode": "es",
         "group": "E"
     },
     "SUI": {
         "teamId": "SUI",
         "teamName": "Switzerland",
-        "flagCode": "CH",
+        "flagCode": "ch",
         "group": "G"
     },
     "TUN": {
         "teamId": "TUN",
         "teamName": "Tunisia",
-        "flagCode": "TN",
+        "flagCode": "tn",
         "group": "D"
     },
     "URU": {
         "teamId": "URU",
         "teamName": "Uruguay",
-        "flagCode": "UY",
+        "flagCode": "uy",
         "group": "H"
     },
     "USA": {
         "teamId": "USA",
         "teamName": "USA",
-        "flagCode": "US",
+        "flagCode": "us",
         "group": "B"
     },
     "WAL": {

@@ -1,29 +1,16 @@
-import {withStyles} from "@mui/styles";
-import {Login} from "@mui/icons-material";
-import {Box, Button, Card, CardContent, CardHeader, Typography} from "@mui/material";
-
-const styles = {
-    card: {},
-    loginButtonDiv: {
-        textAlign: 'center'
-    },
-    title: {
-        fontSize: 48
-    },
-    finePrint: {}
-}
+import {Box, Card, CardContent, CardHeader, Typography} from "@mui/material";
 
 function Overview({classes}) {
     return (
         <Box>
-            <Card className={classes.card}>
+            <Card>
                 <CardHeader
-                    className={classes.title}
+                    titleTypographyProps={{fontSize: 48}}
                     title="Welcome to WC2022!"
                     /*action={<IconButton><SettingsIcon /></IconButton>}*//>
                 <CardContent>
                     {/*{!firebase.auth().currentUser &&
-                        <div className={this.classes.loginButtonDiv}>
+                        <Box sx={{ textAlign: "center" }}>
                             <Button size="large" color="primary" variant="contained"
                                     onClick={this.handleLoginButtonClicked}>Login</Button>
                         </div>
@@ -33,7 +20,7 @@ function Overview({classes}) {
                         Join one or more groups, get your teams, and compete against your friends!<br/>
                         You can create and join groups of anywhere from 2-32 people.<br/>
                         Log in above to get started!<br/>
-                        <br />
+                        <br/>
                     </p>
                     <Typography variant="h5" color="textPrimary">
                         Joining a Party
@@ -59,7 +46,7 @@ function Overview({classes}) {
                         Scoring
                     </Typography>
                     <div>
-                        Players are awarded points for their teams' performance in the World Cup.<br />
+                        Players are awarded points for their teams' performance in the World Cup.<br/>
                         <ul>
                             <li>Each win: 3 points</li>
                             <li>Each clean sheet (shutout): 2 points</li>
@@ -74,7 +61,7 @@ function Overview({classes}) {
                         Teams are distributed in parties randomly, based on criteria set by the party owner.
                         Owners choose how many teams each player is assigned.
                     </p>
-                    <Typography className={classes.finePrint} color="textSecondary">
+                    <Typography className="fine-print" color="textSecondary">
                         WC2022 is in no way officially associated with FIFA or the FIFA World Cup Qatar 2022™.
                     </Typography>
                 </CardContent>
@@ -87,4 +74,4 @@ function Overview({classes}) {
     )
 }
 
-export default withStyles(styles)(Overview);
+export default Overview;

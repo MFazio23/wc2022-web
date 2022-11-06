@@ -1,11 +1,4 @@
 import {Card, CardContent, CardHeader, Typography} from "@mui/material";
-import {withStyles} from "@mui/styles";
-
-const styles = {
-    info: {
-        whiteSpace: 'pre-wrap'
-    }
-};
 
 function Privacy({classes}) {
     return (
@@ -13,7 +6,7 @@ function Privacy({classes}) {
             <CardHeader title="WC2022 Privacy Policy and Terms of Service"/>
             <CardContent>
                 <Typography color="primary" variant="h5">Privacy</Typography>
-                <pre className={classes.info}>
+                <pre className="pre-info">
                     Normally, this would some huge blob of legalese that nobody would read.<br/><br/>
                     Instead, as I'm a developer, this is going to be basic.<br/><br/>
                     The only personal info I get from the site your email address and name (when you log in with a third-party service.)<br/>
@@ -27,7 +20,7 @@ function Privacy({classes}) {
                 <br/>
 
                 <Typography color="primary" variant="h5">Terms of Service</Typography>
-                <pre className={classes.info}>
+                <pre className="pre-info">
                     WC2022 is just for fun, <i>should</i> be free, and has no attached warranty.<br/><br/>
                     Again, this is in no way officially associated with FIFA or the FIFA World Cup Qatar 2022™.<br/><br/>
                     Soccer ball icon made by <a href="http://www.freepik.com/">Freepik</a> from <a href="http://www.flaticon.com/">www.flaticon.com</a>
@@ -37,4 +30,4 @@ function Privacy({classes}) {
     );
 }
 
-export default withStyles(styles)(Privacy);
+export default Privacy;

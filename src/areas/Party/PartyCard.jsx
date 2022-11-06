@@ -1,25 +1,22 @@
 import {Card, CardContent, CardHeader, List} from "@mui/material";
-import {withStyles} from "@mui/styles";
 import PartyCardRow from "./PartyCardRow";
 
-const styles = theme => ({
-    partyCard: {
-        maxWidth: 400,
-        margin: "16px 8px"
+function PartyCard({party}) {
+    const handleItemClick = (player) => {
+        //TODO: Open the info window
+        console.log("Card item clicked", player);
     }
-})
-
-function PartyCard({classes, party}) {
-    return <Card className={classes.partyCard}>
+    return <Card sx={{minWidth: 275, margin: "16px 8px"}}>
         <CardHeader
             title={party.name}
-            subheader={party.code}/>
+            subheader={`${party.code} - Owner: ${party.owner}`}/>
         <CardContent>
             <List>
-                {party.players && party.players.map(player => <PartyCardRow key={player.id} player={player}/>)}
+                {party.players && party.players.map(player => <PartyCardRow key={player.id} player={player}
+                                                                            onItemClicked={handleItemClick}/>)}
             </List>
         </CardContent>
     </Card>
 }
 
-export default withStyles(styles)(PartyCard);
+export default PartyCard;

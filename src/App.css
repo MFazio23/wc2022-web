@@ -1,24 +1,37 @@
 .App {
-  text-align: center;
-  font-family: "Poppins", "Noto Sans", sans-serif;
+    text-align: center;
+    font-family: "Poppins", "Noto Sans", sans-serif;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .logo-image-button {
-  margin-left: 1em;
-  margin-right: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
 }
 
-.logo-image{
-  width: 48px;
+.logo-image {
+    width: 48px;
+}
+
+.pre-info {
+    white-space: pre-wrap;
+}
+
+.profile-icon-button {
+    padding: 0;
+    flex-direction: column;
+}
+
+.user-flag {
+    margin-left: 20px;
 }
