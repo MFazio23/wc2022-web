@@ -3,6 +3,7 @@ import Privacy from "../About/Privacy";
 import Overview from "./Overview";
 import ListParties from "../Party/ListParties";
 import {Box} from "@mui/material";
+import Rankings from "../Rankings/Rankings";
 
 function Main(props) {
 
@@ -20,7 +21,7 @@ function Main(props) {
                 <Route path='/profile' element={<div>Profile</div>}/>
                 <Route path='/schedule' element={<div>Schedule</div>}/>
                 <Route path='/privacy' element={<Privacy />}/>
-                <Route path='/rankings' element={<div>Rankings</div>}/>
+                <Route path='/rankings' element={<Rankings />}/>
             </Routes>
         </Box>
     )
