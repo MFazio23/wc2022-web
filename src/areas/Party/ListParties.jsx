@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import {Box} from "@mui/material";
 import {getParties} from "../../data/api-service";
 import PartyCard from "./PartyCard";
+import {listenForParties} from "../../data/data-repository";
 
 const partyRef = ref(db, `/parties`);
 
@@ -12,13 +13,14 @@ function ListParties(props) {
     const [firebaseParties, setFirebaseParties] = useState({});
 
     useEffect(() => {
-        return onValue(partyRef, (snapshot) => {
+        /*return onValue(partyRef, (snapshot) => {
             const parties = snapshot.val();
 
             if (snapshot.exists()) {
                 setFirebaseParties(parties)
             }
-        })
+        })*/
+        listenForParties(setFirebaseParties)
     }, [])
 
     useEffect(() => {
