@@ -62,7 +62,7 @@ export const Teams = {
     "ENG": {
         "teamId": "ENG",
         "teamName": "England",
-        "flagCode": "GB-ENG",
+        "flagCode": "gb-eng",
         "group": "B"
     },
     "FRA": {
@@ -188,9 +188,14 @@ export const Teams = {
     "WAL": {
         "teamId": "WAL",
         "teamName": "Wales",
-        "flagCode": "GB-WLS",
+        "flagCode": "gb-wls",
         "group": "B"
     }
 }
 
 export const TeamList = Object.entries(Teams).map(([teamId, team]) => team)
+
+export const getFlag = (team, isEliminated, ignorePadding) => team ? (
+    <span key={team.teamId} title={team.teamName}
+          className={`${isEliminated ? 'eliminated ' : ''}${ignorePadding ? '' : 'user-flag'} fi fi-${team.flagCode}`}/>
+) : '';

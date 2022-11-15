@@ -35,3 +35,11 @@
 .user-flag {
     margin-left: 20px;
 }
+
+.team-points {
+    margin-left: 20px;
+}
+
+.party-card-row {
+    cursor: pointer;
+}

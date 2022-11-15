@@ -3,7 +3,7 @@ import {useContext, useState} from "react";
 import ColorModeContext from "../Theming/ColorModeContext";
 import ProfileIconButton from "./ProfileIconButton";
 import {Link} from "react-router-dom";
-import {auth} from "../../data/firebase-service";
+import LoginDialog from "../Login/LoginDialog";
 
 const CloseSource = {
     Login: "login",

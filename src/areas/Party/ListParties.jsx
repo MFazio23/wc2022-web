@@ -1,25 +1,18 @@
-import {db} from '../../data/firebase-service';
-import {onValue, ref} from 'firebase/database';
 import {useEffect, useState} from "react";
 import {Box} from "@mui/material";
 import {getParties} from "../../data/api-service";
 import PartyCard from "./PartyCard";
 import {listenForParties} from "../../data/data-repository";
-
-const partyRef = ref(db, `/parties`);
+import PlayerSummaryDialog from "./PlayerSummaryDialog";
+import {Teams} from "../../data/teams";
 
 function ListParties(props) {
     const [apiParties, setApiParties] = useState([]);
     const [firebaseParties, setFirebaseParties] = useState({});
+    const [selectedPlayer, setSelectedPlayer] = useState(null);
+    const [isPlayerDialogOpen, setPlayerDialogOpen] = useState(false);
 
     useEffect(() => {
-        /*return onValue(partyRef, (snapshot) => {
-            const parties = snapshot.val();
-
-            if (snapshot.exists()) {
-                setFirebaseParties(parties)
-            }
-        })*/
         listenForParties(setFirebaseParties)
     }, [])
 
@@ -31,7 +24,29 @@ function ListParties(props) {
         };
 
         localGetParties();
-    }, [props.user])
+    }, [props.user]);
+
+    const handlePartyRowClicked = (player) => {
+        setSelectedPlayer(player);
+        setPlayerDialogOpen(true);
+    }
+
+    const handlePlayerDialogClose = () => {
+        setPlayerDialogOpen(false);
+        setSelectedPlayer(null);
+    }
+
+    const mapPlayers = (players) =>
+        Object.entries(players || {}).map(([_, player]) => {
+            //TODO: Sort by score.
+            const teams = Object.entries(player?.teams || {})
+                .map(([teamId, _]) => Teams[teamId]);
+
+            return {
+                ...player,
+                teams: teams,
+            }
+        })
 
     const output =
         (apiParties &&
@@ -39,17 +54,20 @@ function ListParties(props) {
             Object
                 .entries(firebaseParties)
                 .filter(([partyCode, _]) => apiParties.find(apiParty => apiParty.code === partyCode))
-                .map(([_, party]) => {
-                    return {
-                        ...party,
-                        owner: party.owner.name,
-                        players: Object.entries(party.players || {}).map(([id, player]) => player)
-                    }
-                })) || [];
+                .map(([_, party]) => ({
+                    ...party,
+                    owner: party.owner.name,
+                    players: mapPlayers(party.players)
+                }))
+        ) || [];
+
+    console.log("output", output)
 
     return (
         <Box>
-            {output.map(party => <PartyCard key={party.code} party={party}/>)}
+            {output.map(party => <PartyCard key={party.code} party={party} onPartyRowClicked={handlePartyRowClicked}/>)}
+            <PlayerSummaryDialog player={selectedPlayer} open={isPlayerDialogOpen}
+                                 onClose={handlePlayerDialogClose}/>
         </Box>
     )
 }

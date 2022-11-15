@@ -3,9 +3,9 @@ import {Dialog, DialogContent, DialogTitle} from '@mui/material';
 import StyledFirebaseAuth from "./StyledFirebaseAuth";
 import {uiConfig, auth} from "../../data/firebase-service";
 
-export default function LoginModal(props) {
+export default function LoginDialog({open, onClose}) {
     return (
-        <Dialog open={props.open}>
+        <Dialog open={open} onClose={onClose}>
             <DialogTitle>WC2022 Account</DialogTitle>
             <DialogContent>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>

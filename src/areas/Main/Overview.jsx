@@ -1,6 +1,6 @@
-import {Box, Card, CardContent, CardHeader, Typography} from "@mui/material";
+import {Box, Button, Card, CardContent, CardHeader, Typography} from "@mui/material";
 
-function Overview({classes}) {
+function Overview({isSignedIn, onOpenLoginModal}) {
     return (
         <Box>
             <Card>
@@ -9,12 +9,12 @@ function Overview({classes}) {
                     title="Welcome to WC2022!"
                     /*action={<IconButton><SettingsIcon /></IconButton>}*//>
                 <CardContent>
-                    {/*{!firebase.auth().currentUser &&
+                    {!isSignedIn &&
                         <Box sx={{ textAlign: "center" }}>
                             <Button size="large" color="primary" variant="contained"
-                                    onClick={this.handleLoginButtonClicked}>Login</Button>
-                        </div>
-                    }*/}
+                                    onClick={onOpenLoginModal}>Login</Button>
+                        </Box>
+                    }
                     <p>
                         WC2022 is a fantasy game for the FIFA World Cup Qatar 2022™.<br/>
                         Join one or more groups, get your teams, and compete against your friends!<br/>
@@ -66,10 +66,6 @@ function Overview({classes}) {
                     </Typography>
                 </CardContent>
             </Card>
-            {/*<Login
-                open={this.state.loginOpen && !firebase.auth().currentUser}
-                onClose={this.handleLoginDialogClosed}
-                isSignedIn={this.props.isSignedIn}/>*/}
         </Box>
     )
 }

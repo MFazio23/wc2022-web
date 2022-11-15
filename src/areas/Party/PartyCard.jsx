@@ -1,11 +1,7 @@
 import {Card, CardContent, CardHeader, List} from "@mui/material";
 import PartyCardRow from "./PartyCardRow";
 
-function PartyCard({party}) {
-    const handleItemClick = (player) => {
-        //TODO: Open the info window
-        console.log("Card item clicked", player);
-    }
+function PartyCard({party, onPartyRowClicked}) {
     return <Card sx={{minWidth: 275, margin: "16px 8px"}}>
         <CardHeader
             title={party.name}
@@ -13,7 +9,7 @@ function PartyCard({party}) {
         <CardContent>
             <List>
                 {party.players && party.players.map(player => <PartyCardRow key={player.id} player={player}
-                                                                            onItemClicked={handleItemClick}/>)}
+                                                                            onPartyRowClicked={onPartyRowClicked}/>)}
             </List>
         </CardContent>
     </Card>

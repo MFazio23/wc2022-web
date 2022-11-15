@@ -4,7 +4,7 @@ import {Box} from "@mui/material";
 import TopNav from "./areas/TopNav/TopNav";
 import Main from "./areas/Main/Main";
 import {auth} from "./data/firebase-service";
-import LoginModal from "./areas/Login/LoginModal";
+import LoginDialog from "./areas/Login/LoginDialog";
 import {updateApiKey} from "./data/api-service";
 
 
@@ -16,7 +16,7 @@ function App() {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setUser(user);
             setIsLoginModalOpen(false);
-            updateApiKey(user.accessToken);
+            updateApiKey(user?.accessToken);
         });
         return () => unsubscribe();
     }, []);
@@ -29,11 +29,19 @@ function App() {
         }
     }
 
+    const handleLoginModalOpen = () => {
+        setIsLoginModalOpen(true)
+    }
+
+    const handleLoginModalClose = () => {
+        setIsLoginModalOpen(false)
+    }
+
     return (
         <Box>
             <TopNav user={user} handleAccountClick={handleAccountClick}/>
-            <Main user={user} isSignedIn={!!user}/>
-            <LoginModal open={isLoginModalOpen} />
+            <Main user={user} isSignedIn={!!user} onOpenLoginModal={handleLoginModalOpen}/>
+            <LoginDialog open={isLoginModalOpen} onClose={handleLoginModalClose} />
         </Box>
     )
 }
