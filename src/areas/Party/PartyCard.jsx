@@ -44,13 +44,13 @@ function PartyCard({user, party, onPartyRowClicked, onDisplaySnackbar, onRefresh
             <CardHeader
                 title={party.name}
                 subheader={`${party.code} - Owner: ${party.owner.name}`}
-                action={<PartyCardMenu isPartyOwner={party.owner.id === user.uid}
+                action={<PartyCardMenu isPartyOwner={party.owner.id === user?.uid}
                                        multipleTeams={party.players.length > 1}
                                        menuItemClicked={handleMenuItemClicked}/>}/>
             <CardContent>
                 <List>
                     {party.players && party.players.map(player => {
-                        return <PartyCardRow key={player.id} isUser={user.uid === player.id} player={player}
+                        return <PartyCardRow key={player.id} isUser={user?.uid === player.id} player={player}
                                              onPartyRowClicked={() => handlePartyRowClicked(player)}/>
                     })}
                 </List>
