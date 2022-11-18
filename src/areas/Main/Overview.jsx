@@ -3,7 +3,7 @@ import {Box, Button, Card, CardContent, CardHeader, Typography} from "@mui/mater
 function Overview({isSignedIn, onOpenLoginModal}) {
     return (
         <Box>
-            <Card>
+            <Card className="wc-card">
                 <CardHeader
                     titleTypographyProps={{fontSize: 48}}
                     title="Welcome to WC2022!"

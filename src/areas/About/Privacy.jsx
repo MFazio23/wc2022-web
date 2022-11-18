@@ -1,9 +1,10 @@
 import {Card, CardContent, CardHeader, Typography} from "@mui/material";
 
-function Privacy({classes}) {
+function Privacy() {
     return (
-        <Card>
-            <CardHeader title="WC2022 Privacy Policy and Terms of Service"/>
+        <Card className="wc-card">
+            <CardHeader title="WC2022 Privacy Policy and Terms of Service"
+                        titleTypographyProps={{fontSize: 48}}/>
             <CardContent>
                 <Typography color="primary" variant="h5">Privacy</Typography>
                 <pre className="pre-info">
@@ -23,7 +24,8 @@ function Privacy({classes}) {
                 <pre className="pre-info">
                     WC2022 is just for fun, <i>should</i> be free, and has no attached warranty.<br/><br/>
                     Again, this is in no way officially associated with FIFA or the FIFA World Cup Qatar 2022™.<br/><br/>
-                    Soccer ball icon made by <a href="http://www.freepik.com/">Freepik</a> from <a href="http://www.flaticon.com/">www.flaticon.com</a>
+                    Soccer ball icon made by <a href="http://www.freepik.com/">Freepik</a> from <a
+                    href="http://www.flaticon.com/">www.flaticon.com</a>
                 </pre>
             </CardContent>
         </Card>

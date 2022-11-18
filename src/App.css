@@ -27,6 +27,11 @@
     white-space: pre-wrap;
 }
 
+.wc-card {
+    min-width: 275px;
+    margin: 16px 8px;
+}
+
 .profile-icon-button {
     padding: 0;
     flex-direction: column;
@@ -42,4 +47,9 @@
 
 .party-card-row {
     cursor: pointer;
+}
+
+.eliminated {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
 }

@@ -1,6 +1,6 @@
 import {useState} from "react";
 import * as React from "react";
-import {Card, Table, TableBody, TableCell, TableContainer, TableRow, Typography} from "@mui/material";
+import {Card, CardHeader, Table, TableBody, TableCell, TableContainer, TableRow, Typography} from "@mui/material";
 import SortableTableHead from "./SortableTableHead";
 
 const SortableTable = (props) => {
@@ -25,8 +25,10 @@ const SortableTable = (props) => {
         : (a, b) => -descendingComparator(a, b, orderBy)
 
     return (
-        <Card>
-            <Typography variant="h3" align="center">{topTitle}</Typography>
+        <Card className="wc-card">
+            <CardHeader
+                titleTypographyProps={{fontSize: 48}}
+                title={topTitle}/>
             <TableContainer>
                 <Table>
                     <SortableTableHead headers={headers} sortOrder={order} orderBy={orderBy}

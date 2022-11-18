@@ -13,10 +13,13 @@ const lightPalette = {
     tertiary: {
         main: '#A312A0'
     },
+    background: {
+        default: '#FAFAFA'
+    }
 }
 const darkPalette = {
     primary: {
-        main: '#020F2A'
+        main: '#00b8ff'
     },
     secondary: {
         main: '#F40290'

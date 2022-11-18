@@ -1,32 +1,24 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {Box} from "@mui/material";
-import {getParties} from "../../data/api-service";
 import PartyCard from "./PartyCard";
-import {listenForParties} from "../../data/data-repository";
-import PlayerSummaryDialog from "./PlayerSummaryDialog";
-import {Teams} from "../../data/teams";
+import PlayerSummaryDialog from "./Dialogs/PlayerSummaryDialog";
+import NewPartyCard from "./NewPartyCard";
+import ScoringCard from "./ScoringCard";
+import LeavePartyDialog from "./Dialogs/LeavePartyDialog";
 
-function ListParties(props) {
-    const [apiParties, setApiParties] = useState([]);
-    const [firebaseParties, setFirebaseParties] = useState({});
+function ListParties({user, parties, onRefreshParties, onDisplaySnackbar}) {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [isPlayerDialogOpen, setPlayerDialogOpen] = useState(false);
+    const [isLeaveDialogOpen, setLeaveDialogOpen] = useState(false);
+    const [selectedParty, setSelectedParty] = useState(null);
 
-    useEffect(() => {
-        listenForParties(setFirebaseParties)
-    }, [])
+    const handleLeaveDialogClose = () => {
+        setLeaveDialogOpen(false);
+        setSelectedParty(null);
+    }
 
-    useEffect(() => {
-        const localGetParties = async () => {
-            const apiParties = await getParties(props.user.userId);
-
-            setApiParties(apiParties || []);
-        };
-
-        localGetParties();
-    }, [props.user]);
-
-    const handlePartyRowClicked = (player) => {
+    const handlePartyRowClicked = (party, player) => {
+        setSelectedParty(party);
         setSelectedPlayer(player);
         setPlayerDialogOpen(true);
     }
@@ -34,40 +26,31 @@ function ListParties(props) {
     const handlePlayerDialogClose = () => {
         setPlayerDialogOpen(false);
         setSelectedPlayer(null);
+        setSelectedParty(null);
     }
 
-    const mapPlayers = (players) =>
-        Object.entries(players || {}).map(([_, player]) => {
-            //TODO: Sort by score.
-            const teams = Object.entries(player?.teams || {})
-                .map(([teamId, _]) => Teams[teamId]);
+    const handleLeaveParty = (party) => {
+        setSelectedParty(party);
+        setLeaveDialogOpen(true);
+    }
 
-            return {
-                ...player,
-                teams: teams,
-            }
-        })
-
-    const output =
-        (apiParties &&
-            firebaseParties &&
-            Object
-                .entries(firebaseParties)
-                .filter(([partyCode, _]) => apiParties.find(apiParty => apiParty.code === partyCode))
-                .map(([_, party]) => ({
-                    ...party,
-                    owner: party.owner.name,
-                    players: mapPlayers(party.players)
-                }))
-        ) || [];
-
-    console.log("output", output)
+    const isPartyOwner = selectedParty && selectedParty.owner.id === user.uid;
+    const didSelectSelf = selectedPlayer && selectedPlayer.id === user.uid;
 
     return (
         <Box>
-            {output.map(party => <PartyCard key={party.code} party={party} onPartyRowClicked={handlePartyRowClicked}/>)}
-            <PlayerSummaryDialog player={selectedPlayer} open={isPlayerDialogOpen}
+            <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>
+            {parties.map(party => <PartyCard key={party.code} user={user} party={party}
+                                             onRefreshParties={onRefreshParties} onLeaveParty={handleLeaveParty}
+                                             onPartyRowClicked={handlePartyRowClicked}
+                                             onDisplaySnackbar={onDisplaySnackbar}/>)}
+            <ScoringCard/>
+            <PlayerSummaryDialog player={selectedPlayer} isPartyOwner={isPartyOwner} didSelectSelf={didSelectSelf}
+                                 open={isPlayerDialogOpen} onLeaveParty={handleLeaveParty}
                                  onClose={handlePlayerDialogClose}/>
+            <LeavePartyDialog user={user} party={selectedParty} open={isLeaveDialogOpen}
+                              onClose={handleLeaveDialogClose} onDisplaySnackbar={onDisplaySnackbar}
+                              onRefreshParties={onRefreshParties}/>
         </Box>
     )
 }

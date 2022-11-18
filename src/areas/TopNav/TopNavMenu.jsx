@@ -3,7 +3,6 @@ import {useContext, useState} from "react";
 import ColorModeContext from "../Theming/ColorModeContext";
 import ProfileIconButton from "./ProfileIconButton";
 import {Link} from "react-router-dom";
-import LoginDialog from "../Login/LoginDialog";
 
 const CloseSource = {
     Login: "login",
@@ -26,11 +25,6 @@ function TopNavMenu(props) {
         colorModeContext.toggleColorMode()
     }
     const handleAccountClick = () => {
-
-        //firebase.auth().signOut();
-
-        //props.onSignOut();
-
         handleClose(CloseSource.ProfileMenu);
         props.handleAccountClick(!props.user)
         /*GA.event({
@@ -41,11 +35,14 @@ function TopNavMenu(props) {
 
     return (
         <Box>
-            <ProfileIconButton text={props.user ? props.user.displayName : "Account"} handleIconClick={handleIconClick}/>
+            <ProfileIconButton text={props.user ? props.user.displayName : "Account"}
+                               handleIconClick={handleIconClick}/>
             <Menu
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}>
+                {props.user && <MenuItem component={Link} to='/'
+                                         onClick={() => handleClose(CloseSource.ProfileMenu)}>Parties</MenuItem>}
                 <MenuItem component={Link} to='/overview'
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Overview</MenuItem>
                 <MenuItem component={Link} to='/rankings'
