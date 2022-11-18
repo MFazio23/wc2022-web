@@ -10,8 +10,8 @@ const ApiEnv = {
 }
 
 const firebaseYear = 2022
-const firebaseEnv = FirebaseEnv.Staging;
-const apiEnv = ApiEnv.Local;
+const firebaseEnv = FirebaseEnv.Prod;
+const apiEnv = ApiEnv.Prod;
 
 const WC2022Config = {
     firebaseYear,
