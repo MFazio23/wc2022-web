@@ -4,7 +4,7 @@ import Overview from "./Overview";
 import ListParties from "../Party/ListParties";
 import {Box} from "@mui/material";
 import Rankings from "../Rankings/Rankings";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {listenForParties, listenForPoints} from "../../data/data-repository";
 import {getParties} from "../../data/api-service";
 import {Teams} from "../../data/teams";
@@ -14,6 +14,14 @@ function Main({user, isSignedIn, onOpenLoginModal, onDisplaySnackbar}) {
     const [apiParties, setApiParties] = useState([]);
     const [firebaseParties, setFirebaseParties] = useState({});
     const [firebasePoints, setFirebasePoints] = useState({});
+
+    const refreshParties = useCallback(async () => {
+        if (user) {
+            const apiParties = await getParties(user.userId);
+
+            setApiParties(apiParties || []);
+        }
+    }, [user])
 
     useEffect(() => {
         listenForParties(setFirebaseParties)
@@ -25,15 +33,7 @@ function Main({user, isSignedIn, onOpenLoginModal, onDisplaySnackbar}) {
 
     useEffect(() => {
         refreshParties();
-    }, [user]);
-
-    const refreshParties = async () => {
-        if (user) {
-            const apiParties = await getParties(user.userId);
-
-            setApiParties(apiParties || []);
-        }
-    }
+    }, [refreshParties]);
 
     const mapPlayers = (players) =>
         Object.entries(players || {}).map(([_, player]) => {

@@ -1,6 +1,6 @@
 import {useState} from "react";
 import * as React from "react";
-import {Card, CardHeader, Table, TableBody, TableCell, TableContainer, TableRow, Typography} from "@mui/material";
+import {Card, CardHeader, Table, TableBody, TableCell, TableContainer, TableRow} from "@mui/material";
 import SortableTableHead from "./SortableTableHead";
 
 const SortableTable = (props) => {
