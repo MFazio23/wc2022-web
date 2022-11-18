@@ -21,6 +21,7 @@ export default function CreatePartyDialog({open, onClose, onDisplaySnackbar, onR
             if (createPartyResult) {
                 onRefreshParties();
                 onClose();
+                setPartyName(null);
                 onDisplaySnackbar(
                     `Party created! Use code ${createPartyResult.code} to invite your friends.`,
                     `Copy Code`,

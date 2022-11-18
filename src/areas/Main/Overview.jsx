@@ -1,16 +1,17 @@
 import {Box, Button, Card, CardContent, CardHeader, Typography} from "@mui/material";
+import NewPartyCard from "../Party/NewPartyCard";
 
-function Overview({isSignedIn, onOpenLoginModal}) {
+function Overview({isSignedIn, onOpenLoginModal, onDisplaySnackbar, onRefreshParties}) {
     return (
         <Box>
+            <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>
             <Card className="wc-card">
                 <CardHeader
                     titleTypographyProps={{fontSize: 48}}
-                    title="Welcome to WC2022!"
-                    /*action={<IconButton><SettingsIcon /></IconButton>}*//>
+                    title="Welcome to WC2022!"/>
                 <CardContent>
                     {!isSignedIn &&
-                        <Box sx={{ textAlign: "center" }}>
+                        <Box sx={{textAlign: "center"}}>
                             <Button size="large" color="primary" variant="contained"
                                     onClick={onOpenLoginModal}>Login</Button>
                         </Box>
@@ -26,18 +27,18 @@ function Overview({isSignedIn, onOpenLoginModal}) {
                         Joining a Party
                     </Typography>
                     <ol>
-                        <li>Log In above</li>
+                        {!isSignedIn && <li>Log In above</li>}
                         <li>Get your six-character party token from your friend</li>
-                        <li>Click the "JOIN PARTY" button</li>
+                        <li>Click the "JOIN PARTY" button above</li>
                         <li>Search for your friend's party</li>
-                        <li>Click "JOIN"!</li>
+                        <li>Click "JOIN PARTY"!</li>
                     </ol>
                     <Typography variant="h5">
                         Creating a Party
                     </Typography>
                     <ol>
-                        <li>Log In above</li>
-                        <li>Click the "CREATE PARTY" button</li>
+                        {!isSignedIn && <li>Log In above</li>}
+                        <li>Click the "CREATE PARTY" button above</li>
                         <li>Give your party a name</li>
                         <li>Click "CREATE"</li>
                         <li>Send your party's six-character code to your friends!</li>

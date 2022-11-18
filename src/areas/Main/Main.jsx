@@ -68,7 +68,8 @@ function Main({user, isSignedIn, onOpenLoginModal, onDisplaySnackbar}) {
             }))
     ) || [];
 
-    const overviewElement = <Overview isSignedIn={isSignedIn} onOpenLoginModal={onOpenLoginModal}/>
+    const overviewElement = <Overview isSignedIn={isSignedIn} onOpenLoginModal={onOpenLoginModal}
+                                      onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={refreshParties}/>
 
     const homeRender =
         parties && parties.length > 0 ? (
