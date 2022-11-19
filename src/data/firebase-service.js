@@ -26,9 +26,9 @@ const uiConfig = {
     signInFlow: 'popup',
     signInOptions: [
         GoogleAuthProvider.PROVIDER_ID,
-        FacebookAuthProvider.PROVIDER_ID,
+        /*FacebookAuthProvider.PROVIDER_ID,
         GithubAuthProvider.PROVIDER_ID,
-        TwitterAuthProvider.PROVIDER_ID,
+        TwitterAuthProvider.PROVIDER_ID,*/
     ],
     callbacks: {
         signInSuccessWithAuthResult: () => false,

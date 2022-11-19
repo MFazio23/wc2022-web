@@ -45,8 +45,8 @@ function TopNavMenu(props) {
                                          onClick={() => handleClose(CloseSource.ProfileMenu)}>Parties</MenuItem>}
                 <MenuItem component={Link} to='/overview'
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Overview</MenuItem>
-                <MenuItem component={Link} to='/rankings'
-                          onClick={() => handleClose(CloseSource.ProfileMenu)}>Rankings</MenuItem>
+                {/*<MenuItem component={Link} to='/rankings'
+                          onClick={() => handleClose(CloseSource.ProfileMenu)}>Rankings</MenuItem>*/}
                 <MenuItem component={Link} to='/privacy'
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Privacy/Terms</MenuItem>
                 <MenuItem onClick={() => toggleUIMode()}>
