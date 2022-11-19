@@ -22,7 +22,6 @@ function App() {
 
     const refreshParties = useCallback(async () => {
         if (user) {
-            console.log("User", user);
             const apiParties = await getParties(user.userId);
 
             setApiParties(apiParties || []);
