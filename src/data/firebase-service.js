@@ -3,10 +3,10 @@ import {getAnalytics} from "firebase/analytics";
 import {getDatabase} from "firebase/database";
 import {
     getAuth,
-    FacebookAuthProvider,
-    GithubAuthProvider,
+    //FacebookAuthProvider,
+    //GithubAuthProvider,
     GoogleAuthProvider,
-    TwitterAuthProvider
+    //TwitterAuthProvider
 } from "firebase/auth";
 
 import config from "./wc2022-config";
