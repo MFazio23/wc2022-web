@@ -2,6 +2,7 @@ import {createTheme, CssBaseline, ThemeProvider, useMediaQuery} from "@mui/mater
 import {useMemo, useState} from "react";
 import ColorModeContext from "./ColorModeContext";
 import App from "../../App";
+import GA from "../../data/google-analytics";
 
 const lightPalette = {
     primary: {
@@ -40,7 +41,13 @@ export default function ThemeHandler() {
 
     const colorMode = useMemo(() => ({
         toggleColorMode: () => {
-            setMode((previousMode) => (previousMode === 'light') ? 'dark' : 'light');
+            setMode((previousMode) => {
+                const newMode = (previousMode === 'light') ? 'dark' : 'light'
+
+                GA.trackChangeColorMode(newMode);
+
+                return newMode;
+            });
         }
     }), []);
     const theme = useMemo(() => createTheme({

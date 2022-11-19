@@ -1,6 +1,7 @@
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {leaveParty} from "../../../data/api-service";
+import GA from "../../../data/google-analytics";
 
 export default function LeavePartyDialog({user, party, open, onClose, onDisplaySnackbar, onRefreshParties}) {
     const [isLeaving, setIsLeaving] = useState(false)
@@ -8,6 +9,8 @@ export default function LeavePartyDialog({user, party, open, onClose, onDisplayS
     const handleLeaveParty = async () => {
         setIsLeaving(true)
         const success = await leaveParty(user.uid, party.code);
+
+        GA.trackLeaveParty(party.code, success);
 
         if (success) {
             await onRefreshParties();

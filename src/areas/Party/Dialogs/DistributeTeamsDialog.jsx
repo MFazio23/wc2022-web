@@ -4,6 +4,7 @@ import RankingTypeSelect from "../RankingTypeSelect";
 import TeamsPerUserSelect from "../TeamsPerUserSelect";
 import {TeamList} from "../../../data/teams";
 import {distributeTeams} from "../../../data/api-service";
+import GA from "../../../data/google-analytics";
 
 const rankingTypes = {
     fifa: {
@@ -49,6 +50,8 @@ export default function DistributeTeamsDialog({party, open, onClose, onDisplaySn
             selectedRankingType.id,
             selectedTeamsPerUser,
         )
+
+        GA.trackDistributeTeams(selectedRankingType.id, selectedTeamsPerUser, distributeResult != null)
 
         setIsDistributingTeams(false)
 

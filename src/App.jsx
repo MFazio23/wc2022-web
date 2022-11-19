@@ -9,6 +9,7 @@ import {getParties, updateApiKey} from "./data/api-service";
 import WCSnackbar from "./areas/Main/WCSnackbar";
 import {listenForParties, listenForPoints} from "./data/data-repository";
 import {mapParties} from "./data/party-handler";
+import GA from "./data/google-analytics";
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
             setApiParties([]);
         }
     }, [user])
+
+    GA.usePageTracking()
 
     useEffect(() => {
         listenForParties(setFirebaseParties)
@@ -57,6 +60,7 @@ function App() {
         if (user) {
             await auth.signOut();
             setApiParties([]);
+            GA.trackSignOut();
         } else {
             setIsLoginModalOpen(true)
         }

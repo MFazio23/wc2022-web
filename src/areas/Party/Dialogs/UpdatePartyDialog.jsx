@@ -1,6 +1,7 @@
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {updateParty} from "../../../data/api-service";
+import GA from "../../../data/google-analytics";
 
 export default function UpdatePartyDialog({party, open, onClose, onDisplaySnackbar, onRefreshParties}) {
     const [newPartyName, setNewPartyName] = useState(party.name)
@@ -17,6 +18,8 @@ export default function UpdatePartyDialog({party, open, onClose, onDisplaySnackb
 
         if (newPartyName) {
             const updatePartyResult = await updateParty(party.code, newPartyName);
+
+            GA.trackUpdateParty(party.code, newPartyName, !!updatePartyResult);
 
             if (updatePartyResult) {
                 onRefreshParties();

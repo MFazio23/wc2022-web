@@ -1,6 +1,7 @@
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {deleteParty} from "../../../data/api-service";
+import GA from "../../../data/google-analytics";
 
 export default function DeletePartyDialog({party, open, onClose, onDisplaySnackbar, onRefreshParties}) {
     const [isDeleting, setIsDeleting] = useState(false)
@@ -8,6 +9,8 @@ export default function DeletePartyDialog({party, open, onClose, onDisplaySnackb
     const handleDeleteParty = async () => {
         setIsDeleting(true)
         const success = await deleteParty(party.code);
+
+        GA.trackDeleteParty(party.code, success)
 
         if (success) {
             await onRefreshParties();

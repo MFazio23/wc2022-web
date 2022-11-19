@@ -5,6 +5,7 @@ import PlayerSummaryDialog from "./Dialogs/PlayerSummaryDialog";
 import NewPartyCard from "./NewPartyCard";
 import ScoringCard from "./ScoringCard";
 import LeavePartyDialog from "./Dialogs/LeavePartyDialog";
+import GA from "../../data/google-analytics";
 
 function ListParties({user, parties, onRefreshParties, onDisplaySnackbar}) {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -21,6 +22,7 @@ function ListParties({user, parties, onRefreshParties, onDisplaySnackbar}) {
         setSelectedParty(party);
         setSelectedPlayer(player);
         setPlayerDialogOpen(true);
+        GA.trackPartyRowClicked(party.code, player.id);
     }
 
     const handlePlayerDialogClose = () => {

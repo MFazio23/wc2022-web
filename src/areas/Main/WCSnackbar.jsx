@@ -1,7 +1,12 @@
 import {Box, Button, IconButton, Snackbar} from "@mui/material";
 import {Close} from "@mui/icons-material";
+import GA from "../../data/google-analytics";
 
 export default function WCSnackbar({open, onClose, snackbarConfig}) {
+    const handleClose = () => {
+        onClose();
+        GA.trackSnackbarManualClose();
+    }
     const action = (
         <Box>
             {snackbarConfig.action &&
@@ -13,7 +18,7 @@ export default function WCSnackbar({open, onClose, snackbarConfig}) {
                 size="small"
                 aria-label="close"
                 color="inherit"
-                onClick={onClose}
+                onClick={handleClose}
             >
                 <Close fontSize="small"/>
             </IconButton>

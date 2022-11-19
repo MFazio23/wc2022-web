@@ -17,6 +17,7 @@ import {
 import React, {useState} from "react";
 import {Search} from "@mui/icons-material";
 import {getPartyByCode, joinParty} from "../../../data/api-service";
+import GA from "../../../data/google-analytics";
 
 const codeRegex = /^[A-Z]{0,6}$/i
 
@@ -58,6 +59,8 @@ export default function JoinPartyDialog({open, onClose, onDisplaySnackbar, onRef
         if (searchPartyCode && searchPartyCode.length === 6 && codeRegex.test(searchPartyCode)) {
             const searchResult = await getPartyByCode(searchPartyCode)
 
+            GA.trackSearchParty(searchPartyCode, !!searchResult);
+
             setFoundParty(
                 searchResult || {name: <span>Party <i>{searchPartyCode}</i> not found</span>}
             )
@@ -69,6 +72,8 @@ export default function JoinPartyDialog({open, onClose, onDisplaySnackbar, onRef
     const handleJoinParty = async () => {
         setIsJoining(true)
         const joinedParty = await joinParty(foundParty.code);
+
+        GA.trackJoinParty(foundParty.code, !!joinedParty);
 
         if (joinedParty) {
             onRefreshParties()
@@ -123,7 +128,9 @@ export default function JoinPartyDialog({open, onClose, onDisplaySnackbar, onRef
             </DialogContent>
             <DialogActions>
                 <Button onClick={onClose}>Cancel</Button>
-                <Button disabled={!(foundParty?.code) || isJoining} onClick={handleJoinParty}>Join Party</Button>
+                {foundParty?.code &&
+                    <Button disabled={!foundParty?.code || isJoining} onClick={handleJoinParty}>Join Party</Button>}
+                {!foundParty?.code && <Button onClick={searchForParty}>Search</Button>}
             </DialogActions>
         </Dialog>
     )

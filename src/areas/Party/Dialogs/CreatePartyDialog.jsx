@@ -1,6 +1,7 @@
 import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
 import React, {useState} from "react";
 import {createParty} from "../../../data/api-service";
+import GA from "../../../data/google-analytics";
 
 export default function CreatePartyDialog({open, onClose, onDisplaySnackbar, onRefreshParties}) {
     const [partyName, setPartyName] = useState(null)
@@ -18,6 +19,8 @@ export default function CreatePartyDialog({open, onClose, onDisplaySnackbar, onR
         if (partyName) {
             const createPartyResult = await createParty(partyName);
 
+            GA.trackCreateParty(partyName, !!createPartyResult);
+
             if (createPartyResult) {
                 onRefreshParties();
                 onClose();
@@ -27,6 +30,7 @@ export default function CreatePartyDialog({open, onClose, onDisplaySnackbar, onR
                     `Copy Code`,
                     () => {
                         navigator.clipboard.writeText(createPartyResult.code);
+                        GA.trackSnackbarCopyCode(createPartyResult.code);
                     }
                 )
             } else {

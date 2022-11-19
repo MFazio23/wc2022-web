@@ -1,3 +1,6 @@
+const year = 2022
+const environment = "Prod";
+
 const FirebaseEnv = {
     Staging: "wc2022-staging",
     Prod: "wc2022"
@@ -9,15 +12,15 @@ const ApiEnv = {
     Prod: "https://wc2022-api.mfazio.dev/"
 }
 
-const firebaseYear = 2022
-const firebaseEnv = FirebaseEnv.Prod;
-const apiEnv = ApiEnv.Prod;
+const firebaseEnv = FirebaseEnv[environment];
 
 const WC2022Config = {
-    firebaseYear,
+    firebaseYear: year,
     firebaseEnv,
     firebaseBaseUrl: `https://${firebaseEnv}.firebaseio.com/`,
-    apiBaseUrl: apiEnv
+    apiBaseUrl: ApiEnv[environment],
+    gaMeasurementId: "G-MNVY6QHEDD",
+    isTest: environment !== "Prod"
 }
 
 export default WC2022Config;
