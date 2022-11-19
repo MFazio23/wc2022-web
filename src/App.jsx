@@ -1,19 +1,49 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './App.css';
 import {Box} from "@mui/material";
 import TopNav from "./areas/TopNav/TopNav";
 import Main from "./areas/Main/Main";
 import {auth} from "./data/firebase-service";
 import LoginDialog from "./areas/Login/LoginDialog";
-import {updateApiKey} from "./data/api-service";
+import {getParties, updateApiKey} from "./data/api-service";
 import WCSnackbar from "./areas/Main/WCSnackbar";
+import {listenForParties, listenForPoints} from "./data/data-repository";
+import {mapParties} from "./data/party-handler";
 
 
 function App() {
     const [user, setUser] = useState(null);
+    const [apiParties, setApiParties] = useState([]);
+    const [firebaseParties, setFirebaseParties] = useState({});
+    const [firebasePoints, setFirebasePoints] = useState({});
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
     const [snackbarConfig, setSnackbarConfig] = useState({});
     const [isSnackbarShown, setIsSnackbarShown] = useState(false);
+
+    const refreshParties = useCallback(async () => {
+        if (user) {
+            console.log("User", user);
+            const apiParties = await getParties(user.userId);
+
+            setApiParties(apiParties || []);
+        } else {
+            setApiParties([]);
+        }
+    }, [user])
+
+    useEffect(() => {
+        listenForParties(setFirebaseParties)
+    }, [])
+
+    useEffect(() => {
+        listenForPoints(setFirebasePoints)
+    }, [])
+
+    useEffect(() => {
+        refreshParties();
+    }, [refreshParties]);
+
+    const parties = mapParties(apiParties, firebaseParties, firebasePoints)
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -27,6 +57,7 @@ function App() {
     const handleAccountClick = async () => {
         if (user) {
             await auth.signOut();
+            setApiParties([]);
         } else {
             setIsLoginModalOpen(true)
         }
@@ -57,8 +88,8 @@ function App() {
     return (
         <Box>
             <TopNav user={user} handleAccountClick={handleAccountClick}/>
-            <Main user={user} isSignedIn={!!user} onOpenLoginModal={handleLoginModalOpen}
-                  onDisplaySnackbar={handleDisplaySnackbar}/>
+            <Main user={user} parties={parties} isSignedIn={!!user} onOpenLoginModal={handleLoginModalOpen}
+                  onDisplaySnackbar={handleDisplaySnackbar} onRefreshParties={refreshParties}/>
             <LoginDialog open={isLoginModalOpen} onClose={handleLoginModalClose}/>
             <WCSnackbar open={isSnackbarShown} onClose={handleSnackbarHidden} snackbarConfig={snackbarConfig} />
         </Box>

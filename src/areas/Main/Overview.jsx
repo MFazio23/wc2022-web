@@ -4,7 +4,7 @@ import NewPartyCard from "../Party/NewPartyCard";
 function Overview({isSignedIn, onOpenLoginModal, onDisplaySnackbar, onRefreshParties}) {
     return (
         <Box>
-            <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>
+            {isSignedIn && <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>}
             <Card className="wc-card">
                 <CardHeader
                     titleTypographyProps={{fontSize: 48}}
