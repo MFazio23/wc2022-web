@@ -3,10 +3,10 @@ import {getAnalytics} from "firebase/analytics";
 import {getDatabase} from "firebase/database";
 import {
     getAuth,
-    //FacebookAuthProvider,
-    //GithubAuthProvider,
+    FacebookAuthProvider,
+    GithubAuthProvider,
     GoogleAuthProvider,
-    //TwitterAuthProvider
+    TwitterAuthProvider
 } from "firebase/auth";
 
 import config from "./wc2022-config";
@@ -26,9 +26,9 @@ const uiConfig = {
     signInFlow: 'popup',
     signInOptions: [
         GoogleAuthProvider.PROVIDER_ID,
-        /*FacebookAuthProvider.PROVIDER_ID,
+        FacebookAuthProvider.PROVIDER_ID,
         GithubAuthProvider.PROVIDER_ID,
-        TwitterAuthProvider.PROVIDER_ID,*/
+        TwitterAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
         signInSuccessWithAuthResult: () => false,
