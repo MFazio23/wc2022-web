@@ -37,10 +37,9 @@ const SortableTable = (props) => {
                         {tableItems.slice().sort(getComparator(order, orderBy)).map((row, rowIndex) => (
                             <TableRow key={rowIndex}>
                                 {Object.values(row).map((cell, index) => (
-                                    (typeof cell.value) !== 'undefined' &&
                                     <TableCell key={index}
                                                align={headers[index]?.numeric ? 'right' : 'left'}>
-                                        {Number(cell.value) ?
+                                        {typeof cell.value !== 'undefined' && Number(cell.value) ?
                                             (cell.value).toFixed(cell.digits || 0) :
                                             cell.value}
                                     </TableCell>

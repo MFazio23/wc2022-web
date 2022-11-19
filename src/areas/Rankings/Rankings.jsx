@@ -59,8 +59,8 @@ function Rankings({points}) {
     }
 
     const rankingTableItems = TeamList.map(team => {
-        const teamRanking = firebaseRankings[team.teamId] || {};
-        const teamPoints = points[team.teamId] || {};
+        const teamRanking = firebaseRankings[team.teamId];
+        const teamPoints = points[team.teamId];
 
         return [
             {
@@ -70,32 +70,32 @@ function Rankings({points}) {
             },
             {
                 id: 'fifa',
-                value: teamRanking.fifa,
+                value: teamRanking?.fifa,
                 numeric: true
             },
             {
                 id: 'elo',
-                value: teamRanking.elo,
+                value: teamRanking?.elo,
                 numeric: true
             },
             {
                 id: 'wins',
-                value: teamPoints.wins,
+                value: teamPoints?.wins,
                 numeric: true
             },
             {
                 id: 'draws',
-                value: teamPoints.ties,
+                value: teamPoints?.ties,
                 numeric: true
             },
             {
                 id: 'goals',
-                value: teamPoints.goalsFor,
+                value: teamPoints?.goalsFor,
                 numeric: true
             },
             {
                 id: 'cleanSheets',
-                value: teamPoints.cleanSheets,
+                value: teamPoints?.cleanSheets,
                 numeric: true
             },
             {
