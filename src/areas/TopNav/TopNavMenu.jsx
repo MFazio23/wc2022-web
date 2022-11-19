@@ -9,7 +9,7 @@ const CloseSource = {
     ProfileMenu: "profileMenu"
 }
 
-function TopNavMenu(props) {
+function TopNavMenu({user, handleAccountClick}) {
     const theme = useTheme()
     const colorModeContext = useContext(ColorModeContext);
 
@@ -24,9 +24,9 @@ function TopNavMenu(props) {
     const toggleUIMode = () => {
         colorModeContext.toggleColorMode()
     }
-    const handleAccountClick = () => {
+    const onAccountClick = () => {
         handleClose(CloseSource.ProfileMenu);
-        props.handleAccountClick(!props.user)
+        handleAccountClick(!user)
         /*GA.event({
             category: 'user',
             action: 'signOut'
@@ -35,24 +35,24 @@ function TopNavMenu(props) {
 
     return (
         <Box>
-            <ProfileIconButton text={props.user ? props.user.displayName : "Account"}
+            <ProfileIconButton text={user ? user.displayName : "Account"}
                                handleIconClick={handleIconClick}/>
             <Menu
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}>
-                {props.user && <MenuItem component={Link} to='/'
+                {user && <MenuItem component={Link} to='/'
                                          onClick={() => handleClose(CloseSource.ProfileMenu)}>Parties</MenuItem>}
                 <MenuItem component={Link} to='/overview'
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Overview</MenuItem>
-                {/*<MenuItem component={Link} to='/rankings'
-                          onClick={() => handleClose(CloseSource.ProfileMenu)}>Rankings</MenuItem>*/}
+                <MenuItem component={Link} to='/rankings'
+                          onClick={() => handleClose(CloseSource.ProfileMenu)}>Rankings</MenuItem>
                 <MenuItem component={Link} to='/privacy'
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Privacy/Terms</MenuItem>
                 <MenuItem onClick={() => toggleUIMode()}>
                     {theme.palette.mode === 'light' ? "Dark mode" : "Light mode"}
                 </MenuItem>
-                <MenuItem onClick={handleAccountClick}>{props.user ? "Sign out" : "Sign in"}</MenuItem>
+                <MenuItem onClick={onAccountClick}>{user ? "Sign out" : "Sign in"}</MenuItem>
             </Menu>
         </Box>
     )

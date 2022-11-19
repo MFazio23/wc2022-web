@@ -88,9 +88,10 @@ function App() {
         <Box>
             <TopNav user={user} handleAccountClick={handleAccountClick}/>
             <Main user={user} parties={parties} isSignedIn={!!user} onOpenLoginModal={handleLoginModalOpen}
-                  onDisplaySnackbar={handleDisplaySnackbar} onRefreshParties={refreshParties}/>
+                  onDisplaySnackbar={handleDisplaySnackbar} onRefreshParties={refreshParties}
+                  firebasePoints={firebasePoints}/>
             <LoginDialog open={isLoginModalOpen} onClose={handleLoginModalClose}/>
-            <WCSnackbar open={isSnackbarShown} onClose={handleSnackbarHidden} snackbarConfig={snackbarConfig} />
+            <WCSnackbar open={isSnackbarShown} onClose={handleSnackbarHidden} snackbarConfig={snackbarConfig}/>
         </Box>
     )
 }

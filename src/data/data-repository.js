@@ -3,24 +3,22 @@ import {onValue, ref} from 'firebase/database';
 
 const partyRef = ref(db, '/parties');
 const pointsRef = ref(db, '/points');
+const rankingsRef = ref(db, '/rankings');
 
-const listenForParties = onUpdate => onValue(partyRef, (snapshot) => {
-    const parties = snapshot.val()
+const listenForParties = (onUpdate) => listenForEvent(onUpdate, partyRef);
+const listenForPoints = (onUpdate) => listenForEvent(onUpdate, pointsRef);
+const listenForRankings = (onUpdate) => listenForEvent(onUpdate, rankingsRef);
 
-    if (snapshot.exists()) {
-        onUpdate(parties);
-    }
-});
-
-const listenForPoints = onUpdate => onValue(pointsRef, snapshot => {
-    const points = snapshot.val()
+const listenForEvent = (onUpdate, ref) => onValue(ref, snapshot => {
+    const result = snapshot.val();
 
     if (snapshot.exists()) {
-        onUpdate(points);
+        onUpdate(result);
     }
 })
 
 export {
     listenForParties,
     listenForPoints,
+    listenForRankings
 }

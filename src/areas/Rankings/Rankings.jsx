@@ -1,5 +1,9 @@
 import {Box} from "@mui/material";
 import SortableTable from "../../components/SortableTable/SortableTable";
+import {useEffect, useState} from "react";
+import {listenForRankings} from "../../data/data-repository";
+import {TeamList} from "../../data/teams";
+import {calculateTotalPointsForTeam} from "../../data/calculations";
 
 const headers = [
     {
@@ -44,10 +48,62 @@ const headers = [
     },
 ]
 
-function Rankings() {
-    const rankingTableItems = []
+function Rankings({points}) {
+    const [firebaseRankings, setFirebaseRankings] = useState(null);
+    useEffect(() => {
+        listenForRankings(setFirebaseRankings)
+    }, [])
+
+    const rankingTableItems = TeamList.map(team => {
+        const teamRanking = firebaseRankings[team.teamId];
+        const teamPoints = points[team.teamId];
+
+        return [
+            {
+                id: 'teamName',
+                value: team.teamName,
+                numeric: false
+            },
+            {
+                id: 'fifa',
+                value: teamRanking.fifa,
+                numeric: true
+            },
+            {
+                id: 'elo',
+                value: teamRanking.elo,
+                numeric: true
+            },
+            {
+                id: 'wins',
+                value: teamPoints.wins,
+                numeric: true
+            },
+            {
+                id: 'draws',
+                value: teamPoints.ties,
+                numeric: true
+            },
+            {
+                id: 'goals',
+                value: teamPoints.goalsFor,
+                numeric: true
+            },
+            {
+                id: 'cleanSheets',
+                value: teamPoints.cleanSheets,
+                numeric: true
+            },
+            {
+                id: 'points',
+                value: calculateTotalPointsForTeam(teamPoints),
+                numeric: true
+            },
+        ]
+    })
+
     return <Box>
-        <SortableTable topTitle="Rankings" headers={headers} tableItems={rankingTableItems} />
+        <SortableTable topTitle="Rankings and Stats" headers={headers} tableItems={rankingTableItems}/>
     </Box>
 }
 

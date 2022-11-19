@@ -3,7 +3,6 @@ import React from "react";
 import {getFlag} from "../../../data/teams";
 
 export default function PlayerSummaryDialogRow({team}) {
-    console.log("Team", team);
     return (team &&
         <ListItem key={team.teamId} disablePadding>
             <ListItemIcon sx={{minWidth: 32}}>

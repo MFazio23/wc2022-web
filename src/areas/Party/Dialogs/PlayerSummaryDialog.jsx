@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, List} from '@mui/material';
+import {Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, List, Typography} from '@mui/material';
 import PlayerSummaryDialogRow from "./PlayerSummaryDialogRow";
 
 export default function PlayerSummaryDialog({player, party, isPartyOwner, didSelectSelf, open, onClose, onLeaveParty}) {
@@ -12,6 +12,7 @@ export default function PlayerSummaryDialog({player, party, isPartyOwner, didSel
                         {player.teams &&
                             player.teams.map(team => team && <PlayerSummaryDialogRow key={team.teamId} team={team}/>)
                         }
+                        {!player.teams?.length && <Typography variant="body1">No teams yet.</Typography> }
                     </List>
                 </Box>
             </DialogContent>

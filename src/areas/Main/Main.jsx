@@ -5,7 +5,7 @@ import ListParties from "../Party/ListParties";
 import {Box} from "@mui/material";
 import Rankings from "../Rankings/Rankings";
 
-function Main({user, parties, isSignedIn, onRefreshParties, onOpenLoginModal, onDisplaySnackbar}) {
+function Main({user, parties, firebasePoints, isSignedIn, onRefreshParties, onOpenLoginModal, onDisplaySnackbar}) {
 
 
     const overviewElement = <Overview isSignedIn={isSignedIn} onOpenLoginModal={onOpenLoginModal}
@@ -27,7 +27,7 @@ function Main({user, parties, isSignedIn, onRefreshParties, onOpenLoginModal, on
                 <Route path='/profile' element={<div>Profile</div>}/>
                 <Route path='/schedule' element={<div>Schedule</div>}/>
                 <Route path='/privacy' element={<Privacy/>}/>
-                <Route path='/rankings' element={<Rankings/>}/>
+                <Route path='/rankings' element={<Rankings points={firebasePoints}/>}/>
             </Routes>
         </Box>
     )
