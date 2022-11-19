@@ -49,14 +49,18 @@ const headers = [
 ]
 
 function Rankings({points}) {
-    const [firebaseRankings, setFirebaseRankings] = useState(null);
+    const [firebaseRankings, setFirebaseRankings] = useState({});
     useEffect(() => {
         listenForRankings(setFirebaseRankings)
     }, [])
 
+    if (!firebaseRankings || !points) {
+        return <Box></Box>
+    }
+
     const rankingTableItems = TeamList.map(team => {
-        const teamRanking = firebaseRankings[team.teamId];
-        const teamPoints = points[team.teamId];
+        const teamRanking = firebaseRankings[team.teamId] || {};
+        const teamPoints = points[team.teamId] || {};
 
         return [
             {
