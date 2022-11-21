@@ -127,7 +127,7 @@ export default function JoinPartyDialog({open, onClose, onDisplaySnackbar, onRef
                 </Box>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose}>Cancel</Button>
+                <Button onClick={handleClose}>Cancel</Button>
                 {foundParty?.code &&
                     <Button disabled={!foundParty?.code || isJoining} onClick={handleJoinParty}>Join Party</Button>}
                 {!foundParty?.code && <Button onClick={searchForParty}>Search</Button>}

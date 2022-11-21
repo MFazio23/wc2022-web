@@ -5,7 +5,7 @@ import TopNav from "./areas/TopNav/TopNav";
 import Main from "./areas/Main/Main";
 import {auth} from "./data/firebase-service";
 import LoginDialog from "./areas/Login/LoginDialog";
-import {getParties, updateApiKey} from "./data/api-service";
+import {getParties} from "./data/api-service";
 import WCSnackbar from "./areas/Main/WCSnackbar";
 import {listenForParties, listenForPoints} from "./data/data-repository";
 import {mapParties} from "./data/party-handler";
@@ -23,7 +23,7 @@ function App() {
 
     const refreshParties = useCallback(async () => {
         if (user) {
-            const apiParties = await getParties(user.userId);
+            const apiParties = await getParties();
 
             setApiParties(apiParties || []);
         } else {
@@ -51,7 +51,6 @@ function App() {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setUser(user);
             setIsLoginModalOpen(false);
-            updateApiKey(user?.accessToken);
         });
         return () => unsubscribe();
     }, []);

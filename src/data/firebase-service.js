@@ -41,9 +41,12 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
+const getIdToken = async (forceRefresh) => await auth.currentUser?.getIdToken(forceRefresh)
+
 export {
     analytics,
     auth,
     db,
     uiConfig,
+    getIdToken,
 }
