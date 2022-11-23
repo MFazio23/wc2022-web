@@ -16,5 +16,4 @@ export default function ScoringCard() {
             </CardContent>
         </Card>
     )
-
 }

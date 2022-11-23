@@ -134,5 +134,4 @@ export default function JoinPartyDialog({open, onClose, onDisplaySnackbar, onRef
             </DialogActions>
         </Dialog>
     )
-
 }

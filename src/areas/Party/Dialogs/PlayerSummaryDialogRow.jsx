@@ -6,7 +6,7 @@ export default function PlayerSummaryDialogRow({team}) {
     return (team &&
         <ListItem key={team.teamId} disablePadding>
             <ListItemIcon sx={{minWidth: 32}}>
-                {getFlag(team, false, true)}
+                {getFlag(team, team.points?.eliminated || false, true)}
             </ListItemIcon>
             <ListItemText primary={team.teamName} secondary={`${team.totalPoints} points`}/>
             <ListItemSecondaryAction sx={{right: 0}}>

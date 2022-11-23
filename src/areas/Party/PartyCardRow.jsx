@@ -14,7 +14,7 @@ function PartyCardRow({player, isUser, onPartyRowClicked}) {
                   onClick={() => onPartyRowClicked(player)}>
                 {player.teams.map(team => team &&
                     <Grid item key={team.teamId} sx={{textAlign: "right"}}>
-                        {getFlag(team, false)}
+                        {getFlag(team, team.points?.eliminated || false)}
                     </Grid>)}
             </Grid>
         </ListItemSecondaryAction>

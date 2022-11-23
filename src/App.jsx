@@ -7,9 +7,10 @@ import {auth} from "./data/firebase-service";
 import LoginDialog from "./areas/Login/LoginDialog";
 import {getParties} from "./data/api-service";
 import WCSnackbar from "./areas/Main/WCSnackbar";
-import {listenForParties, listenForPoints} from "./data/data-repository";
+import {listenForParties, listenForPoints, listenForSchedule} from "./data/data-repository";
 import {mapParties} from "./data/party-handler";
 import GA from "./data/google-analytics";
+import {mapSchedule} from "./data/schedule-handler";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     const [apiParties, setApiParties] = useState([]);
     const [firebaseParties, setFirebaseParties] = useState({});
     const [firebasePoints, setFirebasePoints] = useState({});
+    const [firebaseSchedule, setFirebaseSchedule] = useState({});
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false)
     const [snackbarConfig, setSnackbarConfig] = useState({});
     const [isSnackbarShown, setIsSnackbarShown] = useState(false);
@@ -42,10 +44,15 @@ function App() {
     }, [])
 
     useEffect(() => {
+        listenForSchedule(setFirebaseSchedule)
+    }, [])
+
+    useEffect(() => {
         refreshParties();
     }, [refreshParties]);
 
     const parties = mapParties(apiParties, firebaseParties, firebasePoints)
+    const schedule = mapSchedule(firebaseSchedule)
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -92,7 +99,7 @@ function App() {
             <TopNav user={user} handleAccountClick={handleAccountClick}/>
             <Main user={user} parties={parties} isSignedIn={!!user} onOpenLoginModal={handleLoginModalOpen}
                   onDisplaySnackbar={handleDisplaySnackbar} onRefreshParties={refreshParties}
-                  firebasePoints={firebasePoints}/>
+                  firebasePoints={firebasePoints} schedule={schedule}/>
             <LoginDialog open={isLoginModalOpen} onClose={handleLoginModalClose}/>
             <WCSnackbar open={isSnackbarShown} onClose={handleSnackbarHidden} snackbarConfig={snackbarConfig}/>
         </Box>

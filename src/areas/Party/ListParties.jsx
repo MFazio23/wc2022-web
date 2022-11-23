@@ -6,8 +6,11 @@ import NewPartyCard from "./NewPartyCard";
 import ScoringCard from "./ScoringCard";
 import LeavePartyDialog from "./Dialogs/LeavePartyDialog";
 import GA from "../../data/google-analytics";
+import ScheduleCard from "../Schedule/ScheduleCard";
+import dayjs from "dayjs";
+import {Link} from "react-router-dom";
 
-function ListParties({user, parties, onRefreshParties, onDisplaySnackbar}) {
+function ListParties({user, parties, schedule, onRefreshParties, onDisplaySnackbar}) {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [isPlayerDialogOpen, setPlayerDialogOpen] = useState(false);
     const [isLeaveDialogOpen, setLeaveDialogOpen] = useState(false);
@@ -39,9 +42,18 @@ function ListParties({user, parties, onRefreshParties, onDisplaySnackbar}) {
     const isPartyOwner = selectedParty && selectedParty.owner.id === user.uid;
     const didSelectSelf = selectedPlayer && selectedPlayer.id === user.uid;
 
+    const today = dayjs();
+
+    const todayDate = today.format('dddd, MMM D, YYYY')
+
+    const todayGames = schedule.filter((match) => match.matchDateTime.isSame(today, 'day'))
+
     return (
         <Box>
             <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>
+            <Link to="/schedule" style={{textDecoration: 'none'}}>
+                <ScheduleCard cardTitle="Today's Games" cardSubtitle={todayDate} schedule={todayGames} />
+            </Link>
             {parties.map(party => <PartyCard key={party.code} user={user} party={party}
                                              onRefreshParties={onRefreshParties} onLeaveParty={handleLeaveParty}
                                              onPartyRowClicked={handlePartyRowClicked}
