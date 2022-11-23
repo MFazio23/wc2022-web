@@ -42,11 +42,11 @@ function ListParties({user, parties, schedule, onRefreshParties, onDisplaySnackb
     const isPartyOwner = selectedParty && selectedParty.owner.id === user.uid;
     const didSelectSelf = selectedPlayer && selectedPlayer.id === user.uid;
 
-    const today = dayjs();
+    const now = dayjs();
 
-    const todayDate = today.format('dddd, MMM D, YYYY')
+    const todayDate = now.format('dddd, MMM D, YYYY')
 
-    const todayGames = schedule.filter((match) => match.matchDateTime.isSame(today, 'day'))
+    const todayGames = schedule.filter((match) => match.matchDateTime.isSame(now, 'day'))
 
     return (
         <Box>
