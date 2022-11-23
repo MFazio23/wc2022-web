@@ -46,7 +46,7 @@ function ListParties({user, parties, schedule, onRefreshParties, onDisplaySnackb
 
     const todayDate = now.format('dddd, MMM D, YYYY')
 
-    const todayGames = schedule.filter((match) => match.matchDateTime.isSame(now, 'day'))
+    const todayGames = schedule.filter((match) => match.matchDateTime.local().isSame(now, 'day'))
 
     return (
         <Box>

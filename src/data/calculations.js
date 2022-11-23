@@ -1,5 +1,5 @@
 export function calculateTotalPointsForTeam(points) {
-    return points ? points.wins * 3 + points.cleanSheets * 2 + points.ties + points.goalsFor : null;
+    return points ? points.wins * 3 + points.cleanSheets * 2 + points.ties + points.goalPoints : null;
 }
 
 export function calculateTotalPointsForPlayer(teams) {
