@@ -7,10 +7,9 @@ import ScoringCard from "./ScoringCard";
 import LeavePartyDialog from "./Dialogs/LeavePartyDialog";
 import GA from "../../data/google-analytics";
 import ScheduleCard from "../Schedule/ScheduleCard";
-import dayjs from "dayjs";
 import {Link} from "react-router-dom";
 
-function ListParties({user, parties, schedule, onRefreshParties, onDisplaySnackbar}) {
+function ListParties({user, parties, todayDate, todayGames, onRefreshParties, onDisplaySnackbar}) {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [isPlayerDialogOpen, setPlayerDialogOpen] = useState(false);
     const [isLeaveDialogOpen, setLeaveDialogOpen] = useState(false);
@@ -41,12 +40,6 @@ function ListParties({user, parties, schedule, onRefreshParties, onDisplaySnackb
 
     const isPartyOwner = selectedParty && selectedParty.owner.id === user.uid;
     const didSelectSelf = selectedPlayer && selectedPlayer.id === user.uid;
-
-    const now = dayjs();
-
-    const todayDate = now.format('dddd, MMM D, YYYY')
-
-    const todayGames = schedule.filter((match) => match.matchDateTime.local().isSame(now, 'day'))
 
     return (
         <Box>
