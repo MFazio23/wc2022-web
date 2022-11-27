@@ -24,7 +24,7 @@ export default function ScheduleCardRow({match}) {
             </Grid>
             <Grid container item xs={5} justifyContent="start" alignItems="center">
                 {getFlag(awayTeam, false, true)}
-                <Typography variant="body1" ml={1} display="inline">{awayTeam.teamName}</Typography>
+                <Typography variant="body1" display="inline">{awayTeam.teamName}</Typography>
             </Grid>
         </Grid>
     )

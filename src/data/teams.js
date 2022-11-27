@@ -195,7 +195,7 @@ export const Teams = {
 
 export const TeamList = Object.entries(Teams).map(([teamId, team]) => team)
 
-export const getFlag = (team, isEliminated, ignorePadding) => team ? (
+export const getFlag = (team, isEliminated, flipPadding) => team ? (
     <span key={team.teamId} title={team.teamName}
-          className={`${isEliminated ? 'eliminated ' : ''}${ignorePadding ? '' : 'user-flag'} fi fi-${team.flagCode}`}/>
+          className={`${isEliminated ? 'eliminated ' : ''}${flipPadding ? 'user-flag-flipped' : 'user-flag'} fi fi-${team.flagCode}`}/>
 ) : '';
