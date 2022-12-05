@@ -10,10 +10,16 @@ export default function ScheduleCardRow({match}) {
     const scoreText = getScoreText(match);
     const gameTimeText = getGameTimeText(match);
 
+    const hadPenalties = !!(match.homePenaltyScore || match.awayPenaltyScore);
+
+    const homeTeamNameText = hadPenalties ? `${homeTeam.teamName} (${match.homePenaltyScore})` : homeTeam.teamName;
+    const awayTeamNameText = hadPenalties ? `(${match.awayPenaltyScore}) ${awayTeam.teamName}` : awayTeam.teamName;
+
+    console.log(hadPenalties, match)
     return (
         <Grid container justifyContent="space-between" mb={1}>
             <Grid container item xs={5} justifyContent="end" alignItems="center">
-                <Typography variant="body1" display="inline">{homeTeam.teamName}</Typography>
+                <Typography variant="body1" display="inline">{homeTeamNameText}</Typography>
                 {getFlag(homeTeam, false)}
             </Grid>
             <Grid container item xs={2} justifyContent="center" alignItems="center">
@@ -24,7 +30,7 @@ export default function ScheduleCardRow({match}) {
             </Grid>
             <Grid container item xs={5} justifyContent="start" alignItems="center">
                 {getFlag(awayTeam, false, true)}
-                <Typography variant="body1" display="inline">{awayTeam.teamName}</Typography>
+                <Typography variant="body1" display="inline">{awayTeamNameText}</Typography>
             </Grid>
         </Grid>
     )
