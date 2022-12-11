@@ -25,7 +25,7 @@ export default function Schedule({schedule}) {
             {scheduledDays && Object.entries(scheduledDays)
                 .sort(([a], [b]) => a - b)
                 .map(([dayId, scheduledDay]) => (
-                    <ScheduleCard key={dayId}
+                    <ScheduleCard key={dayId} date={dayId}
                                   cardTitle={scheduledDay.gameDate?.format('dddd, MMM D, YYYY')}
                                   schedule={scheduledDay.matches}/>
                 ))}

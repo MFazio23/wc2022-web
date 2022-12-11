@@ -15,7 +15,6 @@ export default function ScheduleCardRow({match}) {
     const homeTeamNameText = hadPenalties ? `${homeTeam.teamName} (${match.homePenaltyScore})` : homeTeam.teamName;
     const awayTeamNameText = hadPenalties ? `(${match.awayPenaltyScore}) ${awayTeam.teamName}` : awayTeam.teamName;
 
-    console.log(hadPenalties, match)
     return (
         <Grid container justifyContent="space-between" mb={1}>
             <Grid container item xs={5} justifyContent="end" alignItems="center">

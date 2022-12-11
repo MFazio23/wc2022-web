@@ -1,15 +1,15 @@
 import {Box, Button, Card, CardContent, CardHeader, Typography} from "@mui/material";
 import NewPartyCard from "../Party/NewPartyCard";
-import {Link} from "react-router-dom";
 import ScheduleCard from "../Schedule/ScheduleCard";
+import {HashLink} from "react-router-hash-link";
 
-function Overview({isSignedIn, todayDate, todayGames, onOpenLoginModal, onDisplaySnackbar, onRefreshParties}) {
+function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginModal, onDisplaySnackbar, onRefreshParties}) {
     return (
         <Box>
             {isSignedIn && <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>}
-            <Link to="/schedule" style={{textDecoration: 'none'}}>
-                <ScheduleCard cardTitle="Today's Games" cardSubtitle={todayDate} schedule={todayGames} />
-            </Link>
+            <HashLink to={`/schedule#${scheduleDate}`} style={{textDecoration: 'none'}}>
+                <ScheduleCard cardTitle="Today's Games" date={scheduleDate} cardSubtitle={todayDate} schedule={todayGames} />
+            </HashLink>
             <Card className="wc-card">
                 <CardHeader
                     titleTypographyProps={{fontSize: 48}}

@@ -7,9 +7,9 @@ import ScoringCard from "./ScoringCard";
 import LeavePartyDialog from "./Dialogs/LeavePartyDialog";
 import GA from "../../data/google-analytics";
 import ScheduleCard from "../Schedule/ScheduleCard";
-import {Link} from "react-router-dom";
+import {HashLink} from "react-router-hash-link";
 
-function ListParties({user, parties, todayDate, todayGames, onRefreshParties, onDisplaySnackbar}) {
+function ListParties({user, parties, scheduleDate, todayDate, todayGames, onRefreshParties, onDisplaySnackbar}) {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [isPlayerDialogOpen, setPlayerDialogOpen] = useState(false);
     const [isLeaveDialogOpen, setLeaveDialogOpen] = useState(false);
@@ -44,9 +44,10 @@ function ListParties({user, parties, todayDate, todayGames, onRefreshParties, on
     return (
         <Box>
             <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>
-            <Link to="/schedule" style={{textDecoration: 'none'}}>
-                <ScheduleCard cardTitle="Today's Games" cardSubtitle={todayDate} schedule={todayGames} />
-            </Link>
+            <HashLink to={`/schedule#${scheduleDate}`} style={{textDecoration: 'none'}}>
+                <ScheduleCard cardTitle="Today's Games" date={scheduleDate} cardSubtitle={todayDate}
+                              schedule={todayGames}/>
+            </HashLink>
             {parties.map(party => <PartyCard key={party.code} user={user} party={party}
                                              onRefreshParties={onRefreshParties} onLeaveParty={handleLeaveParty}
                                              onPartyRowClicked={handlePartyRowClicked}
