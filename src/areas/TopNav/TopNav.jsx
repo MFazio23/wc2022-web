@@ -1,5 +1,5 @@
 import {AppBar, Box, IconButton, Toolbar, Typography} from "@mui/material";
-import gradientBall from '../../img/wc2022-gradient-ball.png'
+import gradientBall from '../../img/wwc2023-gradient-ball.png'
 import TopNavMenu from "./TopNavMenu";
 import {Link} from "react-router-dom";
 

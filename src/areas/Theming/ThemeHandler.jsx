@@ -3,16 +3,17 @@ import {useMemo, useState} from "react";
 import ColorModeContext from "./ColorModeContext";
 import App from "../../App";
 import GA from "../../data/google-analytics";
+import {lightBlue} from "@mui/material/colors";
 
 const lightPalette = {
     primary: {
-        main: '#020F2A'
+        main: '#00968D'
     },
     secondary: {
-        main: '#F40290'
+        main: '#7ee0d5'
     },
     tertiary: {
-        main: '#A312A0'
+        main: '#FE9E2F'
     },
     background: {
         default: '#FAFAFA'
@@ -20,14 +21,14 @@ const lightPalette = {
 }
 const darkPalette = {
     primary: {
-        main: '#00b8ff'
+        main: '#00968D'
     },
     secondary: {
-        main: '#F40290'
+        main: '#7ee0d5'
     },
     tertiary: {
-        main: '#A312A0'
-    },
+        main: '#FE9E2F'
+    }
 }
 
 const colorModeKey = "color-mode";

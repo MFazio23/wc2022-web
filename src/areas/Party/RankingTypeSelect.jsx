@@ -1,4 +1,4 @@
-import {Box, FormControl, FormHelperText, InputLabel, MenuItem, Select} from "@mui/material";
+import {Box, FormControl, FormHelperText, InputLabel, Link, MenuItem, Select} from "@mui/material";
 
 export default function RankingTypeSelect({rankingTypes, selectedRankingType, onRankingTypeSelected}) {
     return <Box sx={{marginTop: '1em'}}>
@@ -19,7 +19,7 @@ export default function RankingTypeSelect({rankingTypes, selectedRankingType, on
             <FormHelperText>
                 {selectedRankingType?.infoText}
                 {selectedRankingType?.infoLink &&
-                    <a href={selectedRankingType.infoLink} target="_blank" rel="noopener noreferrer">{selectedRankingType.text}</a>}
+                    <Link href={selectedRankingType.infoLink} target="_blank" rel="noopener noreferrer">{selectedRankingType.text}</Link>}
             </FormHelperText>
         </FormControl>
     </Box>
