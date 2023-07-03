@@ -3,7 +3,6 @@ import {useMemo, useState} from "react";
 import ColorModeContext from "./ColorModeContext";
 import App from "../../App";
 import GA from "../../data/google-analytics";
-import {lightBlue} from "@mui/material/colors";
 
 const lightPalette = {
     primary: {
