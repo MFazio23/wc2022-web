@@ -13,7 +13,7 @@ function TopNav(props) {
                         <Box component="img" src={gradientBall} className="logo-image" alt="logo"/>
                     </IconButton>
                     <Typography variant="h6" color="inherit" sx={{flex: 1}}>
-                        WC2022
+                        WWC2023
                     </Typography>
                     <TopNavMenu user={props.user} handleAccountClick={props.handleAccountClick}/>
                 </Toolbar>

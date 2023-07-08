@@ -5,6 +5,7 @@ import {listenForRankings} from "../../data/data-repository";
 import {TeamList} from "../../data/teams";
 import {calculateTotalPointsForTeam} from "../../data/calculations";
 
+// are we removing 'elo' from this table?
 const headers = [
     {
         id: "teamName",

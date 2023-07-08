@@ -3,7 +3,7 @@ import {Card, CardContent, CardHeader, Link, Typography} from "@mui/material";
 function Privacy() {
     return (
         <Card className="wc-card">
-            <CardHeader title="WC2022 Privacy Policy and Terms of Service"
+            <CardHeader title="WWC2023 Privacy Policy and Terms of Service"
                         titleTypographyProps={{fontSize: 48}}/>
             <CardContent>
                 <Typography color="primary" variant="h5">Privacy</Typography>
@@ -22,10 +22,11 @@ function Privacy() {
 
                 <Typography color="primary" variant="h5">Terms of Service</Typography>
                 <pre className="pre-info">
-                    WC2022 is just for fun, <i>should</i> be free, and has no attached warranty.<br/><br/>
-                    Again, this is in no way officially associated with FIFA or the FIFA World Cup Qatar 2022™.<br/><br/>
+                    WWC2023 is just for fun, <i>should</i> be free, and has no attached warranty.<br/><br/>
+                    Again, this is in no way officially associated with FIFA or the FIFA Women's World Cup 2023™.<br/><br/>
 
-                    Soccer ball icon made by <Link href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</Link> from <Link href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</Link>
+                    {/*Unsure of whether the following commented line is the artist for WWC2023 icon*/}
+                    {/*Soccer ball icon made by <Link href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</Link> from <Link href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</Link>*/}
                 </pre>
             </CardContent>
         </Card>

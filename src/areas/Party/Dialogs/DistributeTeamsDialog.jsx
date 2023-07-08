@@ -6,6 +6,7 @@ import {TeamList} from "../../../data/teams";
 import {distributeTeams} from "../../../data/api-service";
 import GA from "../../../data/google-analytics";
 
+// Are we removing elo from here?
 const rankingTypes = {
     fifa: {
         text: "FIFA rankings",

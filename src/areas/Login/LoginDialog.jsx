@@ -6,7 +6,7 @@ import {uiConfig, auth} from "../../data/firebase-service";
 export default function LoginDialog({open, onClose}) {
     return (
         <Dialog open={open} onClose={onClose}>
-            <DialogTitle>WC2022 Account</DialogTitle>
+            <DialogTitle>WWC2023 Account</DialogTitle>
             <DialogContent>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
             </DialogContent>
