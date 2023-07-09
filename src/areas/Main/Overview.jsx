@@ -22,7 +22,7 @@ function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginM
                         </Box>
                     }
                     <p>
-                        WWC2023 is a fantasy game for the FIFA Women's World Cup 2023™.<br/>
+                        WWC2023 is a fantasy game for the FIFA Women's World Cup Australia & New Zealand 2023™.<br/>
                         Join one or more groups, get your teams, and compete against your friends!<br/>
                         You can create and join groups of anywhere from 2-32 people.<br/>
                         Log in above to get started!<br/>
@@ -68,7 +68,7 @@ function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginM
                         Owners choose how many teams each player is assigned.
                     </p>
                     <Typography className="fine-print" color="textSecondary">
-                        WWC2023 is in no way officially associated with FIFA or the FIFA Women's World Cup 2023™.
+                        WWC2023 is in no way officially associated with FIFA or the FIFA Women's World Cup Australia & New Zealand 2023™.
                     </Typography>
                 </CardContent>
             </Card>

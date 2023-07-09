@@ -5,7 +5,7 @@ export default function ScoringCard() {
         <Card className="wc-card">
             <CardHeader
                 title="WWC2023 Scoring"
-                subheader="Players are awarded points for their teams' performance in the World Cup."/>
+                subheader="Players are awarded points for their teams' performance in the Women's World Cup."/>
             <CardContent>
                 <ul>
                     <li>Each win: 3 points</li>
