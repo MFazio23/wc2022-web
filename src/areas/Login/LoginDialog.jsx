@@ -8,7 +8,7 @@ export default function LoginDialog({open, onClose}) {
         <Dialog open={open} onClose={onClose}>
             <DialogTitle>WC2022 Account</DialogTitle>
             <DialogContent>
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}/>
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
             </DialogContent>
         </Dialog>
     )
