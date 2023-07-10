@@ -4,8 +4,8 @@ export default function ScoringCard() {
     return (
         <Card className="wc-card">
             <CardHeader
-                title="WC2022 Scoring"
-                subheader="Players are awarded points for their teams' performance in the World Cup."/>
+                title="WWC2023 Scoring"
+                subheader="Players are awarded points for their teams' performance in the Women's World Cup."/>
             <CardContent>
                 <ul>
                     <li>Each win: 3 points</li>

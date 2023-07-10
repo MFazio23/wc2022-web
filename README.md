@@ -1,2 +1,2 @@
 # wc2022-web
-The website for the WC2022 fantasy game
+The website for the WWC2023 fantasy game

@@ -17,11 +17,6 @@ const headers = [
         numeric: true,
     },
     {
-        id: "elo",
-        label: "ELO",
-        numeric: true,
-    },
-    {
         id: "wins",
         label: "W",
         numeric: true,
@@ -71,11 +66,6 @@ function Rankings({points}) {
             {
                 id: 'fifa',
                 value: teamRanking?.fifa,
-                numeric: true
-            },
-            {
-                id: 'elo',
-                value: teamRanking?.elo,
                 numeric: true
             },
             {

@@ -12,11 +12,6 @@ const rankingTypes = {
         infoText: "Use the current ",
         infoLink: "https://www.fifa.com/fifa-world-ranking/men"
     },
-    elo: {
-        text: "ELO rankings",
-        infoText: "Use the current ",
-        infoLink: "https://eloratings.net/2022_World_Cup"
-    },
     random: {
         text: "Random",
         infoText: "Randomly distribute all teams"

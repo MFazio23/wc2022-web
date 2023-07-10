@@ -13,7 +13,7 @@ function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginM
             <Card className="wc-card">
                 <CardHeader
                     titleTypographyProps={{fontSize: 48}}
-                    title="Welcome to WC2022!"/>
+                    title="Welcome to WWC2023!"/>
                 <CardContent>
                     {!isSignedIn &&
                         <Box sx={{textAlign: "center"}}>
@@ -22,7 +22,7 @@ function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginM
                         </Box>
                     }
                     <p>
-                        WC2022 is a fantasy game for the FIFA World Cup Qatar 2022™.<br/>
+                        WWC2023 is a fantasy game for the FIFA Women's World Cup Australia & New Zealand 2023™.<br/>
                         Join one or more groups, get your teams, and compete against your friends!<br/>
                         You can create and join groups of anywhere from 2-32 people.<br/>
                         Log in above to get started!<br/>
@@ -68,7 +68,7 @@ function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginM
                         Owners choose how many teams each player is assigned.
                     </p>
                     <Typography className="fine-print" color="textSecondary">
-                        WC2022 is in no way officially associated with FIFA or the FIFA World Cup Qatar 2022™.
+                        WWC2023 is in no way officially associated with FIFA or the FIFA Women's World Cup Australia & New Zealand 2023™.
                     </Typography>
                 </CardContent>
             </Card>
