@@ -9,8 +9,6 @@ import {
     TwitterAuthProvider
 } from "firebase/auth";
 
-import * as firebaseui from 'firebaseui';
-
 import config from "./wc2022-config";
 
 const firebaseConfig = {
@@ -31,7 +29,6 @@ const uiConfig = {
         FacebookAuthProvider.PROVIDER_ID,
         GithubAuthProvider.PROVIDER_ID,
         TwitterAuthProvider.PROVIDER_ID,
-        firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID,
     ],
     callbacks: {
         signInSuccessWithAuthResult: () => false,
