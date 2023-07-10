@@ -5,7 +5,6 @@ import {listenForRankings} from "../../data/data-repository";
 import {TeamList} from "../../data/teams";
 import {calculateTotalPointsForTeam} from "../../data/calculations";
 
-// are we removing 'elo' from this table?
 const headers = [
     {
         id: "teamName",
@@ -15,11 +14,6 @@ const headers = [
     {
         id: "fifa",
         label: "FIFA",
-        numeric: true,
-    },
-    {
-        id: "elo",
-        label: "ELO",
         numeric: true,
     },
     {
@@ -72,11 +66,6 @@ function Rankings({points}) {
             {
                 id: 'fifa',
                 value: teamRanking?.fifa,
-                numeric: true
-            },
-            {
-                id: 'elo',
-                value: teamRanking?.elo,
                 numeric: true
             },
             {
