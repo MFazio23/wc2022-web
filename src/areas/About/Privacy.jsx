@@ -23,6 +23,7 @@ function Privacy() {
                 <Typography color="primary" variant="h5">Terms of Service</Typography>
                 <pre className="pre-info">
                     WWC2023 is just for fun, <i>should</i> be free, and has no attached warranty.<br/><br/>
+
                     Again, this is in no way officially associated with FIFA or the FIFA Women's World Cup Australia & New Zealand 2023™.<br/><br/>
 
                     Soccer ball icon made by <Link href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</Link> from <Link href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</Link>
