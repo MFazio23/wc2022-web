@@ -103,7 +103,7 @@ export const Teams = {
     },
     "KOR": {
         "teamId": "KOR",
-        "teamName": "Korea",
+        "teamName": "South Korea",
         "flagCode": "kr",
         "group": "H"
     },
