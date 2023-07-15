@@ -2,8 +2,9 @@ const year = 2023
 const environment = "Prod";
 
 const FirebaseEnv = {
+    Local: "wwc2023-staging",
     Staging: "wwc2023-staging",
-    Prod: "wwc2023-staging"
+    Prod: "wwc2023"
 }
 
 const ApiEnv = {
