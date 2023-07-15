@@ -4,7 +4,7 @@ import ScheduleCard from "./ScheduleCard";
 export default function Schedule({schedule}) {
 
     const scheduledDays = schedule ? schedule.reduce((days, match) => {
-        const gameDay = match.matchDateTime.format('YYYYMMDD');
+        const gameDay = match.matchDateTime.local().format('YYYYMMDD');
         const existingGameDay = (days[gameDay] || {});
         const gameDayMatches = existingGameDay.matches || [];
         gameDayMatches.push(match);
