@@ -10,7 +10,7 @@ function Privacy() {
                 <pre className="pre-info">
                     Normally, this would some huge blob of legalese that nobody would read.<br/><br/>
                     Instead, as I'm a developer, this is going to be basic.<br/><br/>
-                    The only personal info I get from the site your email address and name (when you log in with a third-party service.)<br/>
+                    The only personal info I get from the site is your email address and name (when you log in with a third-party service.)<br/>
                     Your email address allows me to connect accounts across Google, Facebook, and Twitter into a single account.<br/>
                     Your name allows me to display it for the site/app and any groups.<br/><br/>
                     I <i>am</i> using Google Analytics to get metrics on the site.  If this makes you uncomfortable, feel free to block it.<br/>
