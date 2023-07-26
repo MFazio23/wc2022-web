@@ -12,16 +12,16 @@ export const mapSchedule = (firebaseSchedule) =>
         }
     })
 
-export const getScoreText = (match) => {
-    if (match.matchStatus === 'Played' || match.matchStatus === 'Live') {
+export const getScoreText = (match, hideSpoilers) => {
+    if (!hideSpoilers && (match.matchStatus === 'Played' || match.matchStatus === 'Live')) {
         return `${match.homeScore}-${match.awayScore}`
     }
     return match?.matchDateTime?.local()?.format('h:mm') || "N/A";
 }
 
 
-export const getGameTimeText = (match) => {
-    if (match.matchStatus === 'Played') return "FT";
-    if (match.matchStatus === 'Live') return match.matchTime;
+export const getGameTimeText = (match, hideSpoilers) => {
+    if (!hideSpoilers && match.matchStatus === 'Played') return "FT";
+    if (!hideSpoilers && match.matchStatus === 'Live') return match.matchTime;
     return match?.matchDateTime?.local()?.format('a') || "N/A";
 }

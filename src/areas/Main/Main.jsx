@@ -14,6 +14,7 @@ function Main(
         user,
         parties,
         firebasePoints,
+        hideSpoilers,
         schedule,
         isSignedIn,
         onRefreshParties,
@@ -41,7 +42,7 @@ function Main(
     const homeRender =
         parties && parties.length > 0 ? (
             <ListParties user={user} parties={parties} onRefreshParties={onRefreshParties}
-                         onDisplaySnackbar={onDisplaySnackbar} scheduleDate={dayId}
+                         onDisplaySnackbar={onDisplaySnackbar} scheduleDate={dayId} hideSpoilers={hideSpoilers}
                          todayDate={todayDate} todayGames={todayGames}/>) : overviewElement
 
 
@@ -53,10 +54,11 @@ function Main(
                 <Route path='/party'
                        element={<ListParties user={user} parties={parties} onRefreshParties={onRefreshParties}
                                              onDisplaySnackbar={onDisplaySnackbar} scheduleDate={dayId}
-                                             todayDate={todayDate} todayGames={todayGames}/>}/>
-                <Route path='/schedule' element={<Schedule schedule={schedule}/>}/>
+                                             hideSpoilers={hideSpoilers} todayDate={todayDate}
+                                             todayGames={todayGames}/>}/>
+                <Route path='/schedule' element={<Schedule hideSpoilers={hideSpoilers} schedule={schedule}/>}/>
                 <Route path='/privacy' element={<Privacy/>}/>
-                <Route path='/rankings' element={<Rankings points={firebasePoints}/>}/>
+                <Route path='/rankings' element={<Rankings hideSpoilers={hideSpoilers} points={firebasePoints}/>}/>
             </Routes>
 
             <Fab className="fab" color="primary" onClick={scrollToTop} sx={{

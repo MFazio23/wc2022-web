@@ -15,6 +15,7 @@ import {mapSchedule} from "./data/schedule-handler";
 
 function App() {
     const [user, setUser] = useState(null);
+    const [hideSpoilers, setHideSpoilers] = useState(localStorage.getItem('hideSpoilers') || false);
     const [apiParties, setApiParties] = useState([]);
     const [firebaseParties, setFirebaseParties] = useState({});
     const [firebasePoints, setFirebasePoints] = useState({});
@@ -62,6 +63,11 @@ function App() {
         return () => unsubscribe();
     }, []);
 
+    const handleToggleSpoilers = () => {
+        setHideSpoilers(!hideSpoilers)
+        localStorage.setItem('hideSpoilers', !hideSpoilers)
+    }
+
     const handleAccountClick = async () => {
         if (user) {
             await auth.signOut();
@@ -96,10 +102,10 @@ function App() {
 
     return (
         <Box>
-            <TopNav user={user} handleAccountClick={handleAccountClick}/>
+            <TopNav user={user} hideSpoilers={hideSpoilers} handleToggleSpoilers={handleToggleSpoilers} handleAccountClick={handleAccountClick}/>
             <Main user={user} parties={parties} isSignedIn={!!user} onOpenLoginModal={handleLoginModalOpen}
                   onDisplaySnackbar={handleDisplaySnackbar} onRefreshParties={refreshParties}
-                  firebasePoints={firebasePoints} schedule={schedule}/>
+                  firebasePoints={firebasePoints} hideSpoilers={hideSpoilers} schedule={schedule}/>
             <LoginDialog open={isLoginModalOpen} onClose={handleLoginModalClose}/>
             <WCSnackbar open={isSnackbarShown} onClose={handleSnackbarHidden} snackbarConfig={snackbarConfig}/>
         </Box>

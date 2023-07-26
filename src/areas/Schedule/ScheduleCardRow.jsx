@@ -3,12 +3,12 @@ import {getFlag, Teams} from "../../data/teams";
 import {Stack} from "@mui/system";
 import {getGameTimeText, getScoreText} from "../../data/schedule-handler";
 
-export default function ScheduleCardRow({match}) {
+export default function ScheduleCardRow({match, hideSpoilers}) {
     const homeTeam = Teams[match.homeTeam] || {teamName: match.homeTeam};
     const awayTeam = Teams[match.awayTeam] || {teamName: match.awayTeam};
 
-    const scoreText = getScoreText(match);
-    const gameTimeText = getGameTimeText(match);
+    const scoreText = getScoreText(match, hideSpoilers);
+    const gameTimeText = getGameTimeText(match, hideSpoilers);
 
     const hadPenalties = !!(match.homePenaltyScore || match.awayPenaltyScore);
 

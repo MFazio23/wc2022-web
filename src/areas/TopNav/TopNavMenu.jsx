@@ -9,7 +9,7 @@ const CloseSource = {
     ProfileMenu: "profileMenu"
 }
 
-function TopNavMenu({user, handleAccountClick}) {
+function TopNavMenu({user, hideSpoilers, handleToggleSpoilers, handleAccountClick}) {
     const theme = useTheme()
     const colorModeContext = useContext(ColorModeContext);
 
@@ -20,6 +20,9 @@ function TopNavMenu({user, handleAccountClick}) {
     }
     const handleClose = (source) => {
         setAnchorEl(null);
+    }
+    const toggleSpoilers = () => {
+        handleToggleSpoilers();
     }
     const toggleUIMode = () => {
         colorModeContext.toggleColorMode()
@@ -53,6 +56,9 @@ function TopNavMenu({user, handleAccountClick}) {
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Privacy/Terms</MenuItem>
                 <MenuItem onClick={() => toggleUIMode()}>
                     {theme.palette.mode === 'light' ? "Dark mode" : "Light mode"}
+                </MenuItem>
+                <MenuItem onClick={() => toggleSpoilers()}>
+                    {hideSpoilers ? "Show spoilers" : "Hide spoilers"}
                 </MenuItem>
                 <MenuItem onClick={onAccountClick}>{user ? "Sign out" : "Sign in"}</MenuItem>
             </Menu>

@@ -9,7 +9,7 @@ import GA from "../../data/google-analytics";
 import ScheduleCard from "../Schedule/ScheduleCard";
 import {HashLink} from "react-router-hash-link";
 
-function ListParties({user, parties, scheduleDate, todayDate, todayGames, onRefreshParties, onDisplaySnackbar}) {
+function ListParties({user, parties, scheduleDate, todayDate, todayGames, hideSpoilers, onRefreshParties, onDisplaySnackbar}) {
     const [selectedPlayer, setSelectedPlayer] = useState(null);
     const [isPlayerDialogOpen, setPlayerDialogOpen] = useState(false);
     const [isLeaveDialogOpen, setLeaveDialogOpen] = useState(false);
@@ -46,7 +46,7 @@ function ListParties({user, parties, scheduleDate, todayDate, todayGames, onRefr
             <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>
             <HashLink to={`/schedule#${scheduleDate}`} style={{textDecoration: 'none'}}>
                 <ScheduleCard cardTitle="Today's Games" date={scheduleDate} cardSubtitle={todayDate}
-                              schedule={todayGames}/>
+                              hideSpoilers={hideSpoilers} schedule={todayGames}/>
             </HashLink>
             {parties.map(party => <PartyCard key={party.code} user={user} party={party}
                                              onRefreshParties={onRefreshParties} onLeaveParty={handleLeaveParty}

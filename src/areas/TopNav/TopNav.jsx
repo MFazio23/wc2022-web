@@ -15,7 +15,8 @@ function TopNav(props) {
                     <Typography variant="h6" color="inherit" sx={{flex: 1}}>
                         WWC2023
                     </Typography>
-                    <TopNavMenu user={props.user} handleAccountClick={props.handleAccountClick}/>
+                    <TopNavMenu user={props.user} hideSpoilers={props.hideSpoilers} handleToggleSpoilers={props.handleToggleSpoilers}
+                                handleAccountClick={props.handleAccountClick}/>
                 </Toolbar>
             </AppBar>
         </Box>

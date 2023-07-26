@@ -43,7 +43,7 @@ const headers = [
     },
 ]
 
-function Rankings({points}) {
+function Rankings({points, hideSpoilers}) {
     const [firebaseRankings, setFirebaseRankings] = useState({});
     useEffect(() => {
         listenForRankings(setFirebaseRankings)
@@ -70,27 +70,27 @@ function Rankings({points}) {
             },
             {
                 id: 'wins',
-                value: teamPoints?.wins,
+                value: hideSpoilers ? '-' : teamPoints?.wins,
                 numeric: true
             },
             {
                 id: 'draws',
-                value: teamPoints?.ties,
+                value: hideSpoilers ? '-' : teamPoints?.ties,
                 numeric: true
             },
             {
                 id: 'goals',
-                value: teamPoints?.goalsFor,
+                value: hideSpoilers ? '-' : teamPoints?.goalsFor,
                 numeric: true
             },
             {
                 id: 'cleanSheets',
-                value: teamPoints?.cleanSheets,
+                value: hideSpoilers ? '-' : teamPoints?.cleanSheets,
                 numeric: true
             },
             {
                 id: 'points',
-                value: calculateTotalPointsForTeam(teamPoints),
+                value: hideSpoilers ? '-' : calculateTotalPointsForTeam(teamPoints),
                 numeric: true
             },
         ]

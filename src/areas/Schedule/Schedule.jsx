@@ -1,7 +1,7 @@
 import {Box} from "@mui/material";
 import ScheduleCard from "./ScheduleCard";
 
-export default function Schedule({schedule}) {
+export default function Schedule({schedule, hideSpoilers}) {
 
     const scheduledDays = schedule ? schedule.reduce((days, match) => {
         const gameDay = match.matchDateTime.local().format('YYYYMMDD');
@@ -25,7 +25,7 @@ export default function Schedule({schedule}) {
             {scheduledDays && Object.entries(scheduledDays)
                 .sort(([a], [b]) => a - b)
                 .map(([dayId, scheduledDay]) => (
-                    <ScheduleCard key={dayId} date={dayId}
+                    <ScheduleCard key={dayId} date={dayId} hideSpoilers={hideSpoilers}
                                   cardTitle={scheduledDay.gameDate?.format('dddd, MMM D, YYYY')}
                                   schedule={scheduledDay.matches}/>
                 ))}
