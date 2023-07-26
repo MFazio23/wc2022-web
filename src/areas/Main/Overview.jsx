@@ -3,12 +3,24 @@ import NewPartyCard from "../Party/NewPartyCard";
 import ScheduleCard from "../Schedule/ScheduleCard";
 import {HashLink} from "react-router-hash-link";
 
-function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginModal, onDisplaySnackbar, onRefreshParties}) {
+function Overview(
+    {
+        isSignedIn,
+        scheduleDate,
+        todayDate,
+        todayGames,
+        hideSpoilers,
+        onOpenLoginModal,
+        onDisplaySnackbar,
+        onRefreshParties
+    }
+) {
     return (
         <Box>
             {isSignedIn && <NewPartyCard onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>}
             <HashLink to={`/schedule#${scheduleDate}`} style={{textDecoration: 'none'}}>
-                <ScheduleCard cardTitle="Today's Games" date={scheduleDate} cardSubtitle={todayDate} schedule={todayGames} />
+                <ScheduleCard cardTitle="Today's Games" date={scheduleDate} cardSubtitle={todayDate}
+                              schedule={todayGames} hideSpoilers={hideSpoilers}/>
             </HashLink>
             <Card className="wc-card">
                 <CardHeader
@@ -68,7 +80,8 @@ function Overview({isSignedIn, scheduleDate, todayDate, todayGames, onOpenLoginM
                         Owners choose how many teams each player is assigned.
                     </p>
                     <Typography className="fine-print" color="textSecondary">
-                        WWC2023 is in no way officially associated with FIFA or the FIFA Women's World Cup Australia & New Zealand 2023™.
+                        WWC2023 is in no way officially associated with FIFA or the FIFA Women's World Cup Australia &
+                        New Zealand 2023™.
                     </Typography>
                 </CardContent>
             </Card>

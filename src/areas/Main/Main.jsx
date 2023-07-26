@@ -36,7 +36,7 @@ function Main(
     }
 
     const overviewElement = <Overview isSignedIn={isSignedIn} onOpenLoginModal={onOpenLoginModal} scheduleDate={dayId}
-                                      todayDate={todayDate} todayGames={todayGames}
+                                      todayDate={todayDate} todayGames={todayGames} hideSpoilers={hideSpoilers}
                                       onDisplaySnackbar={onDisplaySnackbar} onRefreshParties={onRefreshParties}/>
 
     const homeRender =

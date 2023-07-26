@@ -48,13 +48,13 @@ function ListParties({user, parties, scheduleDate, todayDate, todayGames, hideSp
                 <ScheduleCard cardTitle="Today's Games" date={scheduleDate} cardSubtitle={todayDate}
                               hideSpoilers={hideSpoilers} schedule={todayGames}/>
             </HashLink>
-            {parties.map(party => <PartyCard key={party.code} user={user} party={party}
+            {parties.map(party => <PartyCard key={party.code} user={user} party={party} hideSpoilers={hideSpoilers}
                                              onRefreshParties={onRefreshParties} onLeaveParty={handleLeaveParty}
                                              onPartyRowClicked={handlePartyRowClicked}
                                              onDisplaySnackbar={onDisplaySnackbar}/>)}
             <ScoringCard/>
             <PlayerSummaryDialog player={selectedPlayer} isPartyOwner={isPartyOwner} didSelectSelf={didSelectSelf}
-                                 open={isPlayerDialogOpen} onLeaveParty={handleLeaveParty}
+                                 open={isPlayerDialogOpen} onLeaveParty={handleLeaveParty} hideSpoilers={hideSpoilers}
                                  onClose={handlePlayerDialogClose}/>
             <LeavePartyDialog user={user} party={selectedParty} open={isLeaveDialogOpen}
                               onClose={handleLeaveDialogClose} onDisplaySnackbar={onDisplaySnackbar}

@@ -52,7 +52,7 @@ function App() {
         refreshParties();
     }, [refreshParties]);
 
-    const parties = mapParties(apiParties, firebaseParties, firebasePoints)
+    const parties = mapParties(apiParties, firebaseParties, firebasePoints, hideSpoilers)
     const schedule = mapSchedule(firebaseSchedule)
 
     useEffect(() => {

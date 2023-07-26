@@ -6,7 +6,7 @@ import {useState} from "react";
 import DeletePartyDialog from "./Dialogs/DeletePartyDialog";
 import UpdatePartyDialog from "./Dialogs/UpdatePartyDialog";
 
-function PartyCard({user, party, onPartyRowClicked, onDisplaySnackbar, onRefreshParties, onLeaveParty}) {
+function PartyCard({user, party, hideSpoilers, onPartyRowClicked, onDisplaySnackbar, onRefreshParties, onLeaveParty}) {
     const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const [isDraftDialogOpen, setDraftDialogOpen] = useState(false);
     const [isUpdateDialogOpen, setUpdateDialogOpen] = useState(false);
@@ -51,6 +51,7 @@ function PartyCard({user, party, onPartyRowClicked, onDisplaySnackbar, onRefresh
                 <List>
                     {party.players && party.players.map(player => {
                         return <PartyCardRow key={player.id} isUser={user?.uid === player.id} player={player}
+                                             hideSpoilers={hideSpoilers}
                                              onPartyRowClicked={() => handlePartyRowClicked(player)}/>
                     })}
                 </List>
