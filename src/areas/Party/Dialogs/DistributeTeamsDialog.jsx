@@ -10,7 +10,7 @@ const rankingTypes = {
     fifa: {
         text: "FIFA rankings",
         infoText: "Use the current ",
-        infoLink: "https://www.fifa.com/fifa-world-ranking/men"
+        infoLink: "https://www.fifa.com/fifa-world-ranking/women"
     },
     random: {
         text: "Random",

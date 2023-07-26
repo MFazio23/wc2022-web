@@ -8,7 +8,7 @@ export default function PlayerSummaryDialogRow({team}) {
             <ListItemIcon sx={{minWidth: 32}}>
                 {getFlag(team, team.points?.eliminated || false, true)}
             </ListItemIcon>
-            <ListItemText primary={team.teamName} secondary={`${team.totalPoints} points`}/>
+            <ListItemText primary={team.teamName} secondary={`${team.totalPoints || 0} points`}/>
             <ListItemSecondaryAction sx={{right: 0}}>
                 <Grid container>
                     <Grid item sx={{textAlign: "right"}} xs={3}>

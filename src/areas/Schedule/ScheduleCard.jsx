@@ -1,4 +1,4 @@
-import {Card, CardContent, CardHeader, Grid} from "@mui/material";
+import {Card, CardContent, CardHeader, Grid, Typography} from "@mui/material";
 import ScheduleCardRow from "./ScheduleCardRow";
 
 export default function ScheduleCard({date, cardTitle, cardSubtitle, schedule, hideSpoilers}) {

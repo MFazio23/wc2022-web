@@ -9,8 +9,8 @@ const FirebaseEnv = {
 
 const ApiEnv = {
     Local: "http://localhost:8023/",
-    Staging: "https://wc2022-api-staging.mfazio.dev/",
-    Prod: "https://wc2022-api.mfazio.dev/"
+    Staging: "https://wwc2023-api-staging.mfazio.dev/",
+    Prod: "https://wwc2023-api.mfazio.dev/"
 }
 
 const firebaseEnv = FirebaseEnv[environment];

@@ -11,7 +11,7 @@ export default function Schedule({schedule, hideSpoilers}) {
 
         const newGameDay = {
             ...existingGameDay,
-            gameDate: match.matchDateTime.startOf('day'),
+            gameDate: match.matchDateTime.local().startOf('day'),
             matches: gameDayMatches
         }
         return {
