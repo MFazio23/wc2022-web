@@ -15,18 +15,22 @@ export const mapPlayers = (players, firebasePoints, hideSpoilers) =>
                         totalPoints: calculateTotalPointsForTeam(points),
                         points: firebasePoints[teamId]
                     }
-                }).sort((a, b) => hideSpoilers ? b.teamName : b.totalPoints - hideSpoilers ? a.teamName : a.totalPoints);
+                }).sort((a, b) => {
+                    return hideSpoilers ?
+                        a.teamName.localeCompare(b.teamName) :
+                        b.totalPoints - a.totalPoints;
+                });
 
-            const p = {
+            return {
                 ...player,
                 totalPoints: calculateTotalPointsForPlayer(teams),
                 teams: teams,
-            }
-
-            console.log(p.name, hideSpoilers)
-
-            return p;
-        }).sort((a, b) => hideSpoilers ? b.name : b.totalPoints - hideSpoilers ? a.name : a.totalPoints);
+            };
+        }).sort((a, b) => {
+        return hideSpoilers ?
+            a.name.localeCompare(b.name) :
+            b.totalPoints - a.totalPoints;
+    });
 
 export const mapParties = (apiParties, firebaseParties, firebasePoints, hideSpoilers) => (apiParties &&
     firebaseParties &&
