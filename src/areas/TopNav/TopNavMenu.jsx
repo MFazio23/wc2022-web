@@ -50,6 +50,8 @@ function TopNavMenu({user, hideSpoilers, handleToggleSpoilers, handleAccountClic
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Overview</MenuItem>
                 <MenuItem component={Link} to='/schedule'
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Schedule</MenuItem>
+                <MenuItem component={Link} to='/standings'
+                          onClick={() => handleClose(CloseSource.ProfileMenu)}>Standings</MenuItem>
                 <MenuItem component={Link} to='/rankings'
                           onClick={() => handleClose(CloseSource.ProfileMenu)}>Rankings</MenuItem>
                 <MenuItem component={Link} to='/privacy'

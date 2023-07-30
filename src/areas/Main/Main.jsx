@@ -8,6 +8,7 @@ import Schedule from "../Schedule/Schedule";
 import dayjs from "dayjs";
 import {ArrowUpward} from "@mui/icons-material";
 import React from "react";
+import Standings from "../Standings/Standings";
 
 function Main(
     {
@@ -57,6 +58,7 @@ function Main(
                                              hideSpoilers={hideSpoilers} todayDate={todayDate}
                                              todayGames={todayGames}/>}/>
                 <Route path='/schedule' element={<Schedule hideSpoilers={hideSpoilers} schedule={schedule}/>}/>
+                <Route path='/standings' element={<Standings hideSpoilers={hideSpoilers} schedule={schedule}/>}/>
                 <Route path='/privacy' element={<Privacy/>}/>
                 <Route path='/rankings' element={<Rankings hideSpoilers={hideSpoilers} points={firebasePoints}/>}/>
             </Routes>
