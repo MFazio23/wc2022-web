@@ -17,7 +17,7 @@ export const mapPlayers = (players, firebasePoints, hideSpoilers) =>
                     }
                 }).sort((a, b) => {
                     return hideSpoilers ?
-                        a.teamName.localeCompare(b.teamName) :
+                        a.teamName?.localeCompare(b.teamName) :
                         b.totalPoints - a.totalPoints;
                 });
 
