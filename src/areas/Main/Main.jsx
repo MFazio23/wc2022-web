@@ -17,6 +17,7 @@ function Main(
         firebasePoints,
         hideSpoilers,
         schedule,
+        standings,
         isSignedIn,
         onRefreshParties,
         onOpenLoginModal,
@@ -58,7 +59,7 @@ function Main(
                                              hideSpoilers={hideSpoilers} todayDate={todayDate}
                                              todayGames={todayGames}/>}/>
                 <Route path='/schedule' element={<Schedule hideSpoilers={hideSpoilers} schedule={schedule}/>}/>
-                <Route path='/standings' element={<Standings hideSpoilers={hideSpoilers} schedule={schedule}/>}/>
+                <Route path='/standings' element={<Standings hideSpoilers={hideSpoilers} standings={standings}/>}/>
                 <Route path='/privacy' element={<Privacy/>}/>
                 <Route path='/rankings' element={<Rankings hideSpoilers={hideSpoilers} points={firebasePoints}/>}/>
             </Routes>
