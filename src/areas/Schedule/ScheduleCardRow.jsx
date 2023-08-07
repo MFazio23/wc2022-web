@@ -10,7 +10,7 @@ export default function ScheduleCardRow({match, hideSpoilers}) {
     const scoreText = getScoreText(match, hideSpoilers);
     const gameTimeText = getGameTimeText(match, hideSpoilers);
 
-    const hadPenalties = !!(match.homePenaltyScore || match.awayPenaltyScore);
+    const hadPenalties = !hideSpoilers && !!(match.homePenaltyScore || match.awayPenaltyScore);
 
     const homeTeamNameText = hadPenalties ? `${homeTeam.teamName} (${match.homePenaltyScore})` : homeTeam.teamName;
     const awayTeamNameText = hadPenalties ? `(${match.awayPenaltyScore}) ${awayTeam.teamName}` : awayTeam.teamName;
