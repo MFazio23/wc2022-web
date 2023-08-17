@@ -51,6 +51,11 @@ export default function ThemeHandler() {
         }
     }), []);
     const theme = useMemo(() => createTheme({
+        typography: {
+            fontFamily: [
+                'Poppins'
+            ].join(",")
+        },
         palette: {
             mode,
             ...(mode === 'light' ? lightPalette : darkPalette)
